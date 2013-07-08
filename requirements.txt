@@ -8,5 +8,4 @@ gunicorn==17.5
 itsdangerous==0.22
 wsgiref==0.1.2
 simplejson==2.2.1
-wsgiref==0.1.2
 requests==0.10.4
