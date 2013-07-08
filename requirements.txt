@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Flask==0.10.1
 Jinja2==2.7
 MarkupSafe==0.18
@@ -8,11 +7,9 @@ distribute==0.6.49
 gunicorn==17.5
 itsdangerous==0.22
 wsgiref==0.1.2
-=======
 Flask==0.7.2
 Jinja2==2.6
 Werkzeug==0.7.1
 simplejson==2.2.1
 wsgiref==0.1.2
 requests==0.10.4
->>>>>>> 8dfffe3d0fe8082314b4ff18354758643aca90f4
