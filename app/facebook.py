@@ -1,4 +1,4 @@
-om flask import Flask, redirect, url_for, session, request
+from flask import Flask, redirect, url_for, session, request
 from flask_oauth import OAuth
 
 
