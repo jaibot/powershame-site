@@ -1,12 +1,8 @@
 from flask import redirect, url_for, session, request
 from flask_oauth import OAuth
-from app import app
+from app import app, views
 
-
-SECRET_KEY = 'dfddsdsds983iureriueg'
-DEBUG = True
-FACEBOOK_APP_ID = '649973058365254'
-FACEBOOK_APP_SECRET = '49f27560185f42c8c8fe80f3934c7d27'
+from conf import SECRET_KEY, DEBUG, FACEBOOK_APP_ID, FACEBOOK_APP_SECRET 
 
 
 app.debug = DEBUG
@@ -46,8 +42,8 @@ def facebook_authorized(resp):
         )
     session['oauth_token'] = (resp['access_token'], '')
     me = facebook.get('/me')
-    return 'Logged in as id=%s name=%s redirect=%s' % \
-        (me.data['id'], me.data['name'], request.args.get('next'))
+    return 'Logged in as id=%s name=%s redirect=%s token=%s' % \
+        (me.data['id'], me.data['name'], request.args.get('next'), str(resp['access_token']))
 
 
 @facebook.tokengetter
@@ -55,5 +51,3 @@ def get_facebook_oauth_token():
     return session.get('oauth_token')
 
 
-if __name__ == '__main__':
-    app.run()

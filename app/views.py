@@ -1,14 +1,17 @@
 from flask import render_template
 from app import app
+import requests
+from werkzeug.datastructures import MultiDict
 
-@app.route('/')
-@app.route('/index')
-def index():
-    user = { 'nickname': 'Jai' } # fake user
-    return render_template("index.html",
-      title = 'Home',
-      user = user) 
 
-@app.route('/channel.html')
-def fb_channel():
-    return render_template("channel.html")
+@app.route('/send_message.html')
+def mail_test():
+   a = requests.post(
+        "https://api.mailgun.net/v2/powershame.mailgun.org/messages",
+        auth=("api", 'key-231mtboe2i9bwkxgw5pses5u-rw6u-j4' ),
+        data={"from": 'jai@powershame.mailgun.org',
+              "to": 'jai@jaibot.com',
+              "subject": "Powershame ON THE INTERNET",
+              "text": "hey you" }
+   )
+   return str(a)
