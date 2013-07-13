@@ -1,12 +1,12 @@
 from flask import render_template, redirect, request
-from flask_login import LoginManager,login_user
+from flask.ext.login import LoginManager,login_user
 from flask.ext.principal import identity_changed
 
 from app import app
 from app import db
 from app import login_manager
-from user import User, load_user
-from forms import LoginForm
+from models.user import User, load_user, name_exists
+from forms import LoginForm, SignupForm
 
 import requests
 from werkzeug.datastructures import MultiDict
@@ -23,12 +23,28 @@ def login():
         # Retrieve the user from the hypothetical datastore
         user = User.query.filter_by(username=form.username.data).first()
         # Compare passwords (use password hashing production)
-        if form.password.data == user.password:
-            # Keep the user info in the session using Flask-Login
+        if user.check_pw( form.password.data ) :
             login_user(user)
             return redirect(request.args.get('next') or '/')
+        else:
+            return redirect('/ohno')
     return render_template('login.html', 
         title = 'Sign In',
+        form = form)
+
+@app.route('/signup', methods = ['GET', 'POST'])
+def signup():
+    form = SignupForm()
+    # Validate form input
+    if form.validate_on_submit():
+        if name_exists( form.username.data ):
+            return redirect('/ohno')
+        else:
+            user=User(form.username.data, form.password.data)
+            login_user(user)
+            return redirect(request.args.get('next') or '/')
+    return render_template('signup.html', 
+        title = 'Signup',
         form = form)
 
 @app.route('/send_message.html')
