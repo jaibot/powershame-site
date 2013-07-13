@@ -1,4 +1,4 @@
-from flask import render_template, redirect, request
+from flask import render_template, redirect, request, abort, jsonify
 from flask.ext.login import LoginManager,login_user
 from flask.ext.principal import identity_changed
 
@@ -6,16 +6,19 @@ from app import app
 from app import db
 from app import login_manager
 from models.user import User, load_user, name_exists
+from models.token import Token
 from forms import LoginForm, SignupForm
 
 import requests
 from werkzeug.datastructures import MultiDict
 
+GP=['GET','POST']
+
 @app.route('/')
 def index():
     return render_template('index.html',user='jai')
 
-@app.route('/login', methods = ['GET', 'POST'])
+@app.route('/login', methods = GP )
 def login():
     form = LoginForm()
     # Validate form input
@@ -32,7 +35,7 @@ def login():
         title = 'Sign In',
         form = form)
 
-@app.route('/signup', methods = ['GET', 'POST'])
+@app.route('/signup', methods = GP )
 def signup():
     form = SignupForm()
     # Validate form input
@@ -58,3 +61,23 @@ def mail_test():
               "text": "hey you" }
     )
     return str(a)
+
+@app.route('/get_token', methods = ['POST'])
+def get_token():
+    if not request.json or not 'password' in request.json:
+        abort(400)
+    username=request.json['username']
+    password=request.json['password']
+    user =  User.query.filter_by(username=username).first()
+    token = Token( user )
+    return jsonify( { 'token': token.id } ), 201
+
+@app.route('/verify_token', methods = ['POST'])
+def verify_token():
+    if not request.json or not 'token' in request.json:
+        abort(400)
+    sent_token = request.json['token']
+    token =  Token.query.filter_by( id=sent_token ).first()
+    user = load_user( token.user_id )
+    return jsonify( {'user' : user.username} )
+

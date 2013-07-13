@@ -10,6 +10,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.Unicode(32), unique = True)
     password = db.Column(db.Unicode(130))
+    tokens = db.relationship('Token', backref = 'owner', lazy = 'dynamic')
 
     def __init__( self, username, pw ):
         self.username = username
@@ -44,6 +45,7 @@ def name_exists( name ):
     return User.query.filter_by(username=name).first() is not None
 
 #HTTPAuth stuff for API -TODO move this somewhere else later 
+#Auth stuff is temporary until I set up a proper OAuth token system
 @auth.get_password
 def get_password(username):
     user =  User.query.filter_by(username=name).first()
