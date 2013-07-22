@@ -1,6 +1,7 @@
 from app import db
 from app import app
 from app import login_manager 
+from app import models
 from passlib.hash import pbkdf2_sha512
 from flask.ext.httpauth import HTTPBasicAuth
 
@@ -11,6 +12,7 @@ class User(db.Model):
     username = db.Column(db.Unicode(32), unique = True)
     password = db.Column(db.Unicode(130))
     tokens = db.relationship('Token', backref = 'owner', lazy = 'dynamic')
+    sessions = db.relationship('Session', backref = 'owner', lazy = 'dynamic')
 
     def __init__( self, username, pw ):
         self.username = username
@@ -52,6 +54,13 @@ def get_password(username):
     if user is not None:
         return user.password
 #TODO handle no password case
+
+def get_by_token( token_string ):
+    token = models.token.Token.query.filter_by( id = token_string ).first()
+    if token:
+        return load_user( token.user_id )
+    else:
+        return None
 
 @auth.error_handler
 def unauthorized():

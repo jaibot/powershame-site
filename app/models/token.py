@@ -1,7 +1,8 @@
 from app import app
 from app import db
+from app.models.user import load_user
 from passlib.hash import pbkdf2_sha512
-from user import load_user
+#from models.user import load_user
 
 class Token(db.Model):
     """The token class representing authorization codes on user accounts
@@ -19,9 +20,13 @@ class Token(db.Model):
         self.id = pbkdf2_sha512.encrypt( user.password )
         db.session.add(self)
         db.session.commit()
+
     def verify(self):
         user = load_user( self.user_id )
         return pbkdf2_sha512.verify( self.id, user.password )
 
+    def get_user(self):
+        return app.models.user.load_user( self.id )
+
     def __repr__(self):
-        return '<Post %r>' % (self.body)
+        return self.id

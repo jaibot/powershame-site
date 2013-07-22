@@ -1,5 +1,9 @@
-Implement OAuth provider (for clean API access)
 Implement server-side notifications
 Implement server-side storage
 Implement server-side rendering
 Write token-checking decorator (or see if one already exists)
+Sessions
+    Match requests to sessions
+    Implement session limits
+views.py
+    DRY user-getting-from-token

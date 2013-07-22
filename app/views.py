@@ -5,9 +5,15 @@ from flask.ext.principal import identity_changed
 from app import app
 from app import db
 from app import login_manager
-from models.user import User, load_user, name_exists
+from app import models
+from app import forms
+
+from app.permission_generator import get_temp_upload_creds
+from models.user import User, load_user, name_exists, get_by_token
 from models.token import Token
+from models.session import Session
 from forms import LoginForm, SignupForm
+from permission_generator import get_temp_upload_creds
 
 import requests
 from werkzeug.datastructures import MultiDict
@@ -69,15 +75,47 @@ def get_token():
     username=request.json['username']
     password=request.json['password']
     user =  User.query.filter_by(username=username).first()
-    token = Token( user )
-    return jsonify( { 'token': token.id } ), 201
+    if not user:
+        return jsonify( {'error': 'no such user' } )
+    if user.check_pw( password ):
+        token = Token( user )
+        return jsonify( { 'token': token.id } ), 201
+    else:
+        return jsonify( { 'error': 'invalid password' } )
+
+@app.route('/start_session', methods = ['POST'] )
+def start_session():
+    if not request.json or not 'token' in request.json:
+        abort(400)
+    user = get_by_token( request.json['token'] )
+    session = Session( user )
+    return jsonify( {'id': session.id } )
+
+@app.route('/get_s3_permissions', methods = ['POST'] )
+def get_s3_permissions():
+    if not request.json or not 'token' in request.json:
+        abort(400)
+    user = get_by_token( request.json['token'] )
+    session = Session.query.filter_by( id=request.json['id'] ).first()
+    print request.json['id']
+    if user and session: #only authorize real sessions
+        if session.age_in_seconds() > 900: #only authorize if last token set is old/busted
+            creds = get_temp_upload_creds( session.prefix )
+            return jsonify( {   'access_key':   creds.access_key,
+                                'secret_key':   creds.secret_key,
+                                'session_token':creds.session_token,
+                                'prefix'    :   session.prefix } )
+    abort(400)
+
 
 @app.route('/verify_token', methods = ['POST'])
 def verify_token():
+    """convenience function - return username corresponding to token if it exists"""
     if not request.json or not 'token' in request.json:
         abort(400)
-    sent_token = request.json['token']
-    token =  Token.query.filter_by( id=sent_token ).first()
-    user = load_user( token.user_id )
+    user = get_by_token( request.json['token'] )
     return jsonify( {'user' : user.username} )
 
+@app.route('/status', methods = ['POST'])
+def get_status():
+    return jsonify( {'status': 'alive'} )
