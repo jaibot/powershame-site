@@ -22,7 +22,7 @@ def get_temp_upload_creds( prefix ):
     #   to create a policy that limits by prefix (so users can't upload into
     #   directories other than their own)
     temp_policy = generate_policy_string( prefix )
-    assumed_role = sts_conn.assume_role(    UPLOADER_ROLE_ARN, 
+    assumed_role = sts_conn.assume_role(UPLOADER_ROLE_ARN, 
                                         'temp_upload_creds', 
                                         policy=temp_policy, 
                                         duration_seconds=3600 )

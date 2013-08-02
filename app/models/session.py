@@ -13,23 +13,21 @@ class Session(db.Model):
 
     TODO delete existing tokens on password change
     """
-    id = db.Column(db.Unicode(256), primary_key=True )
-    prefix = db.Column(db.Unicode(256) )
+    prefix = db.Column(db.Unicode(256), primary_key=True )
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     start_time = db.Column(db.DateTime)
-    def __init__( self, user ):
-        self.id = self.make_id()
-        self.user_id = user.id
-        self.prefix = self.make_prefix( user.username )
+    end_time = db.Column(db.DateTime)
+    def __init__( self, user_id, prefix ):
+        self.prefix = prefix
+        self.user_id = user_id
         self.start_time = datetime.datetime.now()
+        self.end_time = datetime.datetime.now() #TODO: actual times
         db.session.add(self)
         db.session.commit()
     def make_id( self ):
         r = Random()
         r.seed()
         return ''.join( r.choice( letters+digits ) for x in xrange(256) )
-    def make_prefix( self, username ):
-        return '/'.join(( username, now_str() ))
     def age_in_seconds(self):
         return (datetime.datetime.now()-self.start_time).seconds
     def __repr__(self):
