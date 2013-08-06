@@ -1,11 +1,9 @@
-from app import db
 from app import app
-from app import login_manager 
-from app import models
+from app import db
+from app import login_manager
+from app.models.client import Client
+from app.models.contact_info import ContactInfo
 from passlib.hash import pbkdf2_sha512
-from flask.ext.httpauth import HTTPBasicAuth
-
-auth = HTTPBasicAuth()
 
 shamers = db.Table('shamers',
     db.Column('user', db.Integer, db.ForeignKey('user.id'), primary_key=True ),
@@ -17,16 +15,22 @@ class User(db.Model):
     username = db.Column(db.Unicode(32), unique = True)
     password = db.Column(db.Unicode(130))
     is_registered = db.Column( db.Boolean )
-    tokens = db.relationship('Token', backref = 'owner', lazy = 'dynamic')
+    clients = db.relationship('Client', backref = 'owner', lazy = 'dynamic')
     sessions = db.relationship('Session', backref = 'owner', lazy = 'dynamic')
-    #shamers = db.relationship('User', secondary=shamers, backref = db.backref('shamees'), foreign_key )
+    upload_creds = db.relationship('UploadCreds', backref = 'owner', lazy = 'dynamic')
+    contact_info = db.relationship('ContactInfo', backref = 'user', lazy='dynamic')
     shamers = db.relationship('User', secondary=shamers, primaryjoin=id==shamers.c.user, secondaryjoin=id==shamers.c.shamer, backref='shamees' )
 
-    def __init__( self, username, pw, is_registered=True ):
+    def __init__( self, username, pw, email=None ):
+        if self.query.filter_by( username=username ).first():
+            raise UsernameExists
         self.username = username
         self.password = pbkdf2_sha512.encrypt( pw )
-        sel.is_registered = is_registered
+        self.is_registered = True
         db.session.add(self)
+        db.session.commit()
+        email_contact = ContactInfo( self, email, ContactInfo.EMAIL )
+        db.session.add(email_contact)
         db.session.commit()
     
     def is_active(self):
@@ -47,6 +51,17 @@ class User(db.Model):
     def set_pw( self, pw ):
         self.password = hash_pw( pw )
 
+    def get_upload_creds( self ):
+        """Return a good credential (if it exists) or None"""
+        creds = self.upload_creds.first()
+        if not creds or creds.expired():
+            from app.controller import new_upload_creds
+            status, creds = new_upload_creds( self )
+        return creds
+
+    def __repr__(self):
+        return 'User: %(username)s' % {'username': self.username} 
+
 @login_manager.user_loader
 def load_user(id):
     return User.query.get(int(id))
@@ -54,23 +69,19 @@ def load_user(id):
 def name_exists( name ):
     return User.query.filter_by(username=name).first() is not None
 
-#HTTPAuth stuff for API -TODO move this somewhere else later 
-@auth.get_password
-def get_password(username):
-    user =  User.query.filter_by(username=name).first()
-    if user is not None:
-        return user.password
-#TODO handle no password case
-
-def get_by_token( token_string ):
-    print token_string
-    token = models.token.Token.query.filter_by( id = token_string ).first()
-    print token
+def get_user_by_token( token_string ):
+    token = Client.query.filter_by( token = token_string ).first()
     if token:
-        return load_user( token.user_id )
+        return load_user( token.user )
     else:
         return None
 
-@auth.error_handler
-def unauthorized():
-    return make_response(jsonify( { 'error': 'Unauthorized access' } ), 401)
+def get_user_by_login( username, password ):
+    """Return user corresponding to correct username/pw combination or None """
+    user = User.query.filter_by( username = username ).first()
+    if user.check_pw( password ):
+        return user
+    return None
+
+class UsernameExists( Exception ):
+    pass

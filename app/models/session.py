@@ -1,7 +1,6 @@
 from app import app
 from app import db
-from random import Random
-from string import letters,digits
+from app.models.user import load_user
 import datetime
 
 class Session(db.Model):
@@ -13,26 +12,19 @@ class Session(db.Model):
 
     TODO delete existing tokens on password change
     """
-    prefix = db.Column(db.Unicode(256), primary_key=True )
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    id   = db.Column( db.Integer, primary_key=True )
+    name = db.Column(db.Unicode(256) )
+    user = db.Column( db.Integer, db.ForeignKey('user.id') )
+    source = db.Column( db.Integer, db.ForeignKey('client.id') )
     start_time = db.Column(db.DateTime)
     end_time = db.Column(db.DateTime)
-    def __init__( self, user_id, prefix ):
-        self.prefix = prefix
+    def __init__( self, user_id, name ):
+        self.user = user_id
+        self.name = name
         self.user_id = user_id
-        self.start_time = datetime.datetime.now()
-        self.end_time = datetime.datetime.now() #TODO: actual times
         db.session.add(self)
         db.session.commit()
-    def make_id( self ):
-        r = Random()
-        r.seed()
-        return ''.join( r.choice( letters+digits ) for x in xrange(256) )
     def age_in_seconds(self):
         return (datetime.datetime.now()-self.start_time).seconds
     def __repr__(self):
-        return self.prefix
-
-def now_str():
-    return datetime.datetime.now().strftime('%Y%m%d%H%M%S')
-
+        return '%(name)s (%(user)s)' % {'name': self.name, 'user': str(load_user( self.user )) }

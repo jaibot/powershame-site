@@ -9,12 +9,12 @@ from private_config import ISSUER_KEY, ISSUER_SECRET, UPLOAD_BUCKET, UPLOADER_RO
 #UPLOAD_BUCKET=app.config['UPLOAD_BUCKET']
 #UPLOADER_ROLE_ARN=app.config['UPLOADER_ROLE_ARN']
 
-def get_temp_upload_creds( prefix ):
+def get_temp_upload_creds( prefix, lifetime ):
     """Get creds to temporarily upload to s3 UPLOAD_BUCKET with prefix
 
     The resulting credentials object will have an access_key, secret_key, and
     session_token which can be safely passed to an end-user to grant temporary
-    upload rights limited by prefix. Creds expire after 60 minutes.
+    upload rights limited by prefix. Creds expire after lifetime seconds
     """
     sts_conn = sts.STSConnection(   aws_access_key_id = ISSUER_KEY,
                                     aws_secret_access_key = ISSUER_SECRET )
@@ -25,7 +25,7 @@ def get_temp_upload_creds( prefix ):
     assumed_role = sts_conn.assume_role(UPLOADER_ROLE_ARN, 
                                         'temp_upload_creds', 
                                         policy=temp_policy, 
-                                        duration_seconds=3600 )
+                                        duration_seconds=lifetime )
     return assumed_role.credentials
 
 def generate_policy_string( prefix ):
@@ -54,6 +54,7 @@ def generate_policy_string( prefix ):
     }""" % { 'bucket': UPLOAD_BUCKET, 'prefix': prefix }
     return policy_string
 
+"""
 if __name__ == '__main__':
     my_prefix='winning'
     creds = get_temp_upload_creds( my_prefix )
@@ -62,3 +63,4 @@ if __name__ == '__main__':
     bucket = s3_conn.lookup(UPLOAD_BUCKET, validate=False)
     key = bucket.new_key(my_prefix + '/testing')
     key.set_contents_from_filename('/tmp/facts.txt')
+"""

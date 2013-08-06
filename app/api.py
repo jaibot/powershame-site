@@ -1,82 +1,106 @@
-from flask import request, abort, jsonify
-
 from app import app
 from app import db
-from app import login_manager
-from app import models
-from app import forms
+from app import controller
+from controller import add_client, OK,FAIL, complete_session
+from app.models.user import User, get_user_by_token, get_user_by_login
+from app.models.client import Client
 
-from app.permission_generator import get_temp_upload_creds
-from models.user import User, get_by_token
-from models.token import Token
-from models.session import Session
-
+from flask import request, abort, jsonify
 import requests
 from werkzeug.datastructures import MultiDict
 
-@app.route('/get_token', methods = ['POST'])
-def get_token():
-    if not request.json or not 'password' in request.json:
-        abort(400)
-    username=request.json['username']
-    password=request.json['password']
-    user =  User.query.filter_by(username=username).first()
-    if not user:
-        return jsonify( {'error': 'no such user' } )
-    if user.check_pw( password ):
-        token = Token( user )
-        return jsonify( { 'token': token.id } ), 201
-    else:
-        return jsonify( { 'error': 'invalid password' } )
 
-#@app.route('/start_session', methods = ['POST'] )
-#def start_session():
-#    if not request.json or not 'token' in request.json:
-#        abort(400)
-#    user = get_by_token( request.json['token'] )
-#    session = Session( user )
-#    return jsonify( {'id': session.id } )
+def valid_request( request, vars ):
+    print request.json
+    print vars
+    print all( v in request.json for v in vars)
+    return request.json and all( v in request.json for v in vars )
+
+def compose_response( result=OK, message=None, args=None ):
+    response=dict()
+    if args:
+        response=args.copy()
+    if result==OK:
+        response['result']='OK'
+    elif result==FAIL:
+        response['result']='FAIL'
+    else:
+        response['result']='UNKNOWN' #TODO: Raise a red flag
+    if message:
+        response['message']=message
+    return jsonify(response)
+
+def api_login(request):
+    if not request.json:
+        return None
+    if 'token' in request.json:
+        return get_user_by_token( request.json['token'] )
+    elif 'username' in request.json and 'password' in request.json:
+        return get_user_by_login( request.json['username'], request.json['password'] )
+    else:
+        return None
+
+@app.route('/add_client', methods = ['POST'])
+def add_client():
+    """Given a name and either a working token or u/p, add client and return token"""
+    if valid_request( request, ('client_name',) ):
+        user = api_login( request )
+        if user:
+            if 'name' in request.json:
+                name = request.json['name']
+            else:
+                name = "Unnamed client"
+            status,new_client = add_client( user, name )
+            if status==OK:
+                return compose_response( OK, args={'token': new_client.token} )
+            else:
+                return compose_response( OK, message='Could not add client' )
+        else:
+            return compose_response( FAIL, message='Invalid login' )
+    else:
+        return compose_response( FAIL, message='No client name given' )
+
+@app.route('/get_token', methods = ['POST']) #legacy - TODO: delete (after updating client)
+def get_token():
+    return add_client()
 
 @app.route('/get_s3_permissions', methods = ['POST'] )
 def get_s3_permissions():
-    if not request.json or not 'token' in request.json:
-        abort(400)
-    user = get_by_token( request.json['token'] )
-    if user: #only authorize real sessions
-        creds = get_temp_upload_creds( user.username ) #TODO: change prefix
-        return jsonify( {   'access_key':   creds.access_key,
-                            'secret_key':   creds.secret_key,
-                            'session_token':creds.session_token,
-                            'prefix'    :   user.username } )
-    abort(400)
+    if valid_request( request, ('token',) ):
+        user = get_user_by_token( request.json['token'] )
+        if user:
+            creds = user.get_upload_creds()
+            return compose_response( OK, args= {   
+                    'access_key':   creds.access_id,
+                    'secret_key':   creds.secret_key,
+                    'session_token':creds.session_token,
+                    'prefix':       creds.prefix} )
+        else:
+            return compose_response( FAIL, message="Invalid token" )
+    else:
+        return compose_response( FAIL, message="No token given" )
 
 @app.route('/session_complete', methods = ['POST'])
 def session_complete():
-    """convenience function - return username corresponding to token if it exists"""
-    if not request.json or not 'token' in request.json or not 'session_name' in request.json:
-        abort(400)
-    user = get_by_token( request.json['token'] )
-    if user:
-        prefix = user.username + '/' + request.json['session_name']
-        if Session.query.filter_by( prefix=prefix ).first():
-            return jsonify( {'status' : 'duplicate'} )
-        else:
-            session = Session( user.id, prefix )
-            return jsonify( {   'status' : 'success' } )
+    if valid_request( request, ('token', 'session_name') ):
+        user = get_user_by_token( request.json['token'] )
+        status, session = complete_session( user, request.json['session_name'] ) #TODO
+        return compose_response( status )
     else:
-        abort(400)
+        return compose_response( FAIL, message="Invalid token or session_name" )
 
 @app.route('/verify_token', methods = ['POST'])
 def verify_token():
     """API interface for completing session"""
-    if not request.json or not 'token' in request.json:
-        abort(400)
-    user = get_by_token( request.json['token'] )
-    if user:
-        return jsonify( {'user' : user.username} )
+    if valid_request( request, ('token',) ):
+        user = get_user_by_token( request.json['token'] )
+        if user:
+            return compose_response( OK, args={'user': user.username} )
+        else:
+            return compose_response( FAIL, message="Invalid token or user" )
     else:
-        abort(400)
+        return compose_response( FAIL, message="Invalid request" )
 
 @app.route('/status', methods = ['POST'])
 def get_status():
-    return jsonify( {'status': 'alive'} )
+    return compose_response( OK, args={'status':'alive'}  )

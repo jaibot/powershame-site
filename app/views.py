@@ -1,14 +1,11 @@
-from flask import render_template, redirect, request, abort, jsonify
-from flask.ext.login import LoginManager,login_user
-from flask.ext.principal import identity_changed
+from flask import render_template, redirect, request, abort,  flash
+from flask.ext.login import login_user
 
 from app import app
 from app import db
-from app import login_manager
-from app import models
-from app import forms
 
-from models.user import User, name_exists
+from app.models.user import User, get_user_by_login, UsernameExists
+
 from forms import LoginForm, SignupForm
 
 import requests
@@ -18,24 +15,18 @@ from werkzeug.datastructures import MultiDict
 def index():
     return render_template('index.html',user='jai')
 
-#@app.route('/choose_shamers')
-#def choose_shamers_2():
-#    return render_template('index.html',user='jai')
-
-
 @app.route('/login', methods = ['GET','POST'] )
-def login():
+def login_view():
     form = LoginForm()
-    # Validate form input
     if form.validate_on_submit():
-        # Retrieve the user from the hypothetical datastore
-        user = User.query.filter_by(username=form.username.data).first()
-        # Compare passwords (use password hashing production)
-        if user.check_pw( form.password.data ) :
-            login_user(user)
-            return redirect(request.args.get('next') or '/')
+        username = form.username.data
+        password = form.password.data
+        user = get_user_by_login( username, password )
+        if not user:
+            flash('Sorry - username and/or password incorrect')
         else:
-            return redirect('/ohno')
+            login( user, request )
+        return redirect(request.args.get('next') or '/')
     return render_template('login.html', 
         title = 'Sign In',
         form = form)
@@ -43,17 +34,26 @@ def login():
 @app.route('/signup', methods = ['GET','POST'] )
 def signup():
     form = SignupForm()
-    # Validate form input
     if form.validate_on_submit():
-        if name_exists( form.username.data ):
-            return redirect('/ohno')
+        username = form.username.data
+        password = form.password.data
+        email    = form.email.data
+        try:
+            user = User( username, password, email )
+        except UsernameExists:
+            flash('Sorry, someone already has that username!')
         else:
-            user=User(form.username.data, form.password.data)
-            login_user(user)
-            return redirect(request.args.get('next') or '/')
-    return render_template('signup.html', 
-        title = 'Signup',
-        form = form)
+            login( user, request )
+    else:
+        flash('form did not validate')
+    return render_template('signup.html', form = form)
+
+def login( user, request ):
+    success = login_user( user )
+    if success:
+        flash('Logged in successfully!')
+    else:
+        flash('Something went wrong with login...')
 
 #@app.route('/send_message.html')
 #def mail_test():
