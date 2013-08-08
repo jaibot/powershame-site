@@ -3,6 +3,7 @@ from flask.ext.login import login_user
 
 from app import app
 from app import db
+from controller import render_session
 
 from app.models.user import User, get_user_by_login, UsernameExists
 
@@ -10,6 +11,11 @@ from forms import LoginForm, SignupForm
 
 import requests
 from werkzeug.datastructures import MultiDict
+
+@app.route('/test')
+def testing():
+    render_session('jai','20130806174953')
+    return render_template('index.html',user='testing...')
 
 @app.route('/')
 def index():

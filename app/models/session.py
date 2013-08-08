@@ -1,6 +1,7 @@
 from app import app
 from app import db
 from app.models.user import load_user
+from app.models.session_shamers import session_shamers
 import datetime
 
 class Session(db.Model):
@@ -18,10 +19,11 @@ class Session(db.Model):
     source = db.Column( db.Integer, db.ForeignKey('client.id') )
     start_time = db.Column(db.DateTime)
     end_time = db.Column(db.DateTime)
-    def __init__( self, user_id, name ):
-        self.user = user_id
+    shamers = db.relationship('ContactInfo', secondary=session_shamers )
+    def __init__( self, user, name, client ):
+        self.user = user.id
         self.name = name
-        self.user_id = user_id
+        self.source = client.id
         db.session.add(self)
         db.session.commit()
     def age_in_seconds(self):

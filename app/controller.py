@@ -13,42 +13,12 @@ from app.models.upload_creds import UploadCreds
 
 from datetime import datetime,timedelta
 
+import pika
+import json
+
 FAIL,OK=0,1
 
-def create_user( username, password ):
-    try:
-        user = User( username, password )
-    finally:
-        return SUCCESS
-
-def delete_user( user ):
-    pass #TODO
-
-def set_password( user, password ):
-    pass #TODO
-
 def create_session( user, name ):
-    pass #TODO
-
-def complete_session( user, name ):
-    return OK, None
-
-def create_token( user ):
-    pass #TODO
-
-def add_client( user, name ):
-    """create client"""
-    client = Client( user, name )
-    return OK, client
-
-def get_client_token( user, client ):
-    """get token corresponding to client"""
-    pass #TODO
-
-def delete_client( user, client ):
-    pass #TODO
-
-def check_token( user, token ):
     pass #TODO
 
 def get_or_update_upload_creds( user ):
@@ -61,10 +31,10 @@ def get_or_update_upload_creds( user ):
             db.session.delete( c )
         db.session.commit()
     creds = all_creds[-1]
-    if cred.expired():
+    if creds.expired():
         return new_upload_creds( user )
     else:
-        return creds
+        return OK, creds
 
 def new_upload_creds( user ):
     old_creds = user.upload_creds.first()
@@ -82,4 +52,31 @@ def new_upload_creds( user ):
             creds.session_token )
     return OK, upload_creds
 
+def render_session( session ):
+    """queue rendering of a completed powershame session (via rabbitmq)"""
+    user = session.owner
+    session_name = session.name
+    message = json.dumps( 
+        { 'username': user.username, 
+          'session_name': session_name } ) 
+    # RabbitMQ setup
+    connection = pika.BlockingConnection(
+        pika.ConnectionParameters( host=app.config['QUEUE_HOST'] ) )
+    channel = connection.channel()
+    channel.basic_qos( prefetch_count=3 )
+    channel.queue_declare(
+        queue = app.config['RENDERING_QUEUE'], 
+        durable = True ) 
+    # send message
+    channel.basic_publish(
+        exchange      = '',
+        routing_key   = app.config['RENDERING_QUEUE'],
+        body          = message,
+        properties    = pika.BasicProperties(
+            delivery_mode = 2,         )
+    )
+    connection.close()
+    return OK
 
+def notify_rendered_session( session ):
+    shamers = session.shamers

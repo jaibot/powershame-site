@@ -1,9 +1,10 @@
 from app import app
 from app import db
 from app import controller
-from controller import add_client, OK,FAIL, complete_session
+from controller import OK,FAIL, render_session
 from app.models.user import User, get_user_by_token, get_user_by_login
 from app.models.client import Client
+from app.models.session import Session
 
 from flask import request, abort, jsonify
 import requests
@@ -50,11 +51,11 @@ def add_client():
                 name = request.json['name']
             else:
                 name = "Unnamed client"
-            status,new_client = add_client( user, name )
-            if status==OK:
+            new_client = client( user, name )
+            if new_client:
                 return compose_response( OK, args={'token': new_client.token} )
             else:
-                return compose_response( OK, message='Could not add client' )
+                return compose_response( FAIL, message='Could not add client' )
         else:
             return compose_response( FAIL, message='Invalid login' )
     else:
@@ -84,7 +85,12 @@ def get_s3_permissions():
 def session_complete():
     if valid_request( request, ('token', 'session_name') ):
         user = get_user_by_token( request.json['token'] )
-        status, session = complete_session( user, request.json['session_name'] ) #TODO
+        name = request.json['session_name']
+        client = Client.query.filter_by( token=request.json['token'] )
+        session = user.sessions.filter_by( name=name ).first()
+        if not session:
+            session = Session( user, name, client )
+        status, session = render_session( session )
         return compose_response( status )
     else:
         return compose_response( FAIL, message="Invalid token or session_name" )

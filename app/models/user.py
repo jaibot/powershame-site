@@ -3,6 +3,7 @@ from app import db
 from app import login_manager
 from app.models.client import Client
 from app.models.contact_info import ContactInfo
+from app.models.user_shamers import user_shamers
 from passlib.hash import pbkdf2_sha512
 
 shamers = db.Table('shamers',
@@ -12,14 +13,14 @@ shamers = db.Table('shamers',
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key = True)
-    username = db.Column(db.Unicode(32), unique = True)
+    username = db.Column(db.Unicode(32), unique = True, index=True)
     password = db.Column(db.Unicode(130))
     is_registered = db.Column( db.Boolean )
     clients = db.relationship('Client', backref = 'owner', lazy = 'dynamic')
     sessions = db.relationship('Session', backref = 'owner', lazy = 'dynamic')
     upload_creds = db.relationship('UploadCreds', backref = 'owner', lazy = 'dynamic')
     contact_info = db.relationship('ContactInfo', backref = 'user', lazy='dynamic')
-    shamers = db.relationship('User', secondary=shamers, primaryjoin=id==shamers.c.user, secondaryjoin=id==shamers.c.shamer, backref='shamees' )
+    shamers = db.relationship('ContactInfo', secondary=user_shamers,  backref='shamee', lazy='dynamic' )
 
     def __init__( self, username, pw, email=None ):
         if self.query.filter_by( username=username ).first():

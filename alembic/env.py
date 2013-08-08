@@ -15,7 +15,9 @@ fileConfig(config.config_file_name)
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = None
+from app.app import db
+target_metadata = db.metadata
+#target_metadata = None
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
@@ -41,28 +43,63 @@ def run_migrations_offline():
         context.run_migrations()
 
 def run_migrations_online():
-    """Run migrations in 'online' mode.
-
-    In this scenario we need to create an Engine
-    and associate a connection with the context.
-
-    """
+    # Override sqlalchemy.url value to application's value
+    alembic_config = config.get_section(config.config_ini_section)
+    import config as app_config
+    alembic_config['sqlalchemy.url'] = app_config.SQLALCHEMY_DATABASE_URI
     engine = engine_from_config(
-                config.get_section(config.config_ini_section),
+                alembic_config,
                 prefix='sqlalchemy.',
                 poolclass=pool.NullPool)
-
     connection = engine.connect()
     context.configure(
                 connection=connection,
                 target_metadata=target_metadata
                 )
-
     try:
         with context.begin_transaction():
             context.run_migrations()
     finally:
         connection.close()
+
+#def run_migrations_online():
+#    """Run migrations in 'online' mode.
+#
+#    In this scenario we need to create an Engine
+#    and associate a connection with the context.
+#
+#    """
+#    import config as app_config
+#
+#    engine = engine_from_config(
+#                config.get_section(config.config_ini_section),
+#                prefix='sqlalchemy.',
+#                poolclass=pool.NullPool)
+#
+#    connection = engine.connect()
+#    context.configure(
+#                connection=connection,
+#                target_metadata=target_metadata
+#                )
+#
+#    try:
+#        with context.begin_transaction():
+#            context.run_migrations()
+#    finally:
+#        connection.close()
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 if context.is_offline_mode():
     run_migrations_offline()
