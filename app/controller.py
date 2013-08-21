@@ -1,3 +1,4 @@
+#TODO: Make this entire file redundant and delete, it is needlessly confusing
 from flask import request, abort, jsonify, session
 from flask.ext.login import LoginManager,login_user
 

@@ -14,7 +14,7 @@ class Client(db.Model):
     TODO delete existing tokens on password change
     """
     id = db.Column(db.Integer, primary_key = True)
-    token = db.Column( db.String(256) ) #TODO: index this
+    token = db.Column( db.String(256), index=True ) #TODO: index this
     user = db.Column( db.Integer, db.ForeignKey('user.id') )
     name = db.Column( db.String(256) )
     valid = db.Column( db.Boolean )
@@ -31,12 +31,23 @@ class Client(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    def serialize( self ):
+        return {
+            'user':     models.user.load_user( self.user ).username,
+            'name':     self.name,
+            'valid':    self.valid,
+            'token':    self.token
+        }
+
     def verify(self):
         user = load_user( self.user )
-        return pbkdf2_sha512.verify( self.id, user.password )
+        return pbkdf2_sha512.verify( self.token, user.password )
 
     def get_user(self):
         return models.user.load_user( self.user )
 
     def __repr__(self):
         return '%(name)s (%(user)s)' % { 'name':str(self.name), 'user': str(self.get_user()) }
+
+def get_client_by_token( token ):
+    return Client.query.filter(token=token).first() or None

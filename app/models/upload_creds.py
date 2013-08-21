@@ -27,6 +27,10 @@ class UploadCreds(db.Model):
         db.session.commit()
     def expired( self ):
         return datetime.now() > self.expiration
-    
-
+    def serialize( self ):
+        return {
+                'access_key':   self.access_id,
+                'secret_key':   self.secret_key,
+                'session_token':self.session_token
+            }
 

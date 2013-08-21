@@ -59,6 +59,8 @@ class User(db.Model):
             from app.controller import new_upload_creds
             status, creds = new_upload_creds( self )
         return creds
+    def can_add_client( self ):
+        return True #TODO: limit client registration
 
     def __repr__(self):
         return 'User: %(username)s' % {'username': self.username} 
