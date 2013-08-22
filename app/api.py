@@ -16,8 +16,11 @@ class HTTPCode:
     ok = 200
     bad_request=400
     unauthorized=401
+    denied = 403
+    server_error = 500
 
 def auth_required(f):
+    """Decorator for functions rewuiring a valid token"""
     @wraps(f)
     def authed_f(*args, **kwargs):
         token_header=app.config['API_TOKEN_HEADER']
@@ -29,21 +32,25 @@ def auth_required(f):
             return jsonify({'message':'Invalid token'}), HTTPCode.unauthorized
         kwargs['client'] = client
         kwargs['user']= client.owner
-        print kwargs
         return f(*args, **kwargs)
     return authed_f
 
 def api(required=None):
+    """Decorator for API functions ensuring sanity and required arguments"""
     def make_wrap(f):
         @wraps(f)
         def apied_f( *args, **kwargs ):
-            if not request.json:
-                return jsonify({'message':'Request must be in JSON format'}),HTTPCode.bad_request
-            if required and not all( r in request.json for r in required ):
-                response = dict( (r,r in request.json) for r in required )
-                response['message'] = 'One or more required arguments missing'
-                return jsonify(response), HTTPCode.bad_request
-            return f(*args, **kwargs)
+            try:
+                if not request.json:
+                    return jsonify({'message':'Request must be in JSON format'}),HTTPCode.bad_request
+                if required and not all( r in request.json for r in required ):
+                    response = dict( (r,r in request.json) for r in required )
+                    response['message'] = 'One or more required arguments missing'
+                    return jsonify(response), HTTPCode.bad_request
+                return f(*args, **kwargs)
+            except Exception as e:
+                return jsonify({'message':'Something went horribly wrong'}),HTTPCode.server_error
+                #TODO: Log and alert whatever disaster just happened
         return apied_f
     return make_wrap
 
@@ -66,31 +73,49 @@ def register_client( *args, **kwargs ):
     if user and user.can_add_client():
         client = Client( user, client_name )
     if client:
-        return jsonify(client), HTTPCode.ok
+        return jsonify(client.serialize() ), HTTPCode.ok
     else:
-        return jsonify({'message':'Could not create client'}), HTTPCode.bad_request
+        return jsonify({'message':'Could not create client'}), HTTPCode.denied
 
 @app.route('/api/request_upload_creds', methods = ['POST'])
 @api()
 @auth_required
 def request_upload_creds(*args, **kwargs):
     user = kwargs['user']
-    return jsonify(user.get_upload_creds().serialize()), HTTPCode.ok
+    permissions = user.get_upload_creds().serialize()
+    if permissions:
+        permissions['bucket_name'] = app.config['PIC_BUCKET']
+        return jsonify(permissions), HTTPCode.ok
+    else:
+        return jsonify( {'message':'Could not get credentials'} ), HTTPCode.denied
 
 @app.route('/api/register_session', methods = ['POST'])
 @api(required=('name',))
 @auth_required
 def register_session(*args, **kwargs):
     session_name=request.json['name']
-    print kwargs
     session = Session( kwargs['user'], session_name, kwargs['client'] )
     return jsonify( session.serialize() ), HTTPCode.ok
 
 
 @app.route('/api/complete_session', methods=['POST'])
-@api(required=('id',) )
+@api()
 @auth_required
 def complete_session( *args, **kwargs ):
-    session = Session.query.get( request.json['id'] )
+    if 'id' in request.json():
+        session = Session.query.get( request.json['id'] )
+    elif 'name' in request.json():
+        name=request.json()['name']
+        session = _first_or_none( filter(lambda x:x.name==name, user.sessions) )
+    else:
+        return jsonify( {'message':'Need to supply session id or name'} ), HTTPCode.bad_request
     session.finish()
     return jsonify( {'message':'Session is rendering'} ), HTTPCode.ok 
+
+def _first_or_none(l,n=0):
+    if len(l)>n:
+        return l[n]
+    else:
+        return None
+
+

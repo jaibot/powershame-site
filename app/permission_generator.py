@@ -3,8 +3,8 @@
 from app import app
 from boto import sts
 
-def get_temp_upload_creds( prefix, lifetime ):
-    """Get creds to temporarily upload to s3 UPLOAD_BUCKET with prefix
+def get_temp_upload_creds( prefix, lifetime=None ):
+    """Get creds to temporarily upload to s3 PIC with prefix
 
     The resulting credentials object will have an access_key, secret_key, and
     session_token which can be safely passed to an end-user to grant temporary
@@ -17,6 +17,8 @@ def get_temp_upload_creds( prefix, lifetime ):
     #   to create a policy that limits by prefix (so users can't upload into
     #   directories other than their own)
     temp_policy = generate_policy_string( prefix )
+    if not lifetime:
+        lifetime=app.config['UPLOAD_CREDS_LIFETIME']
     assumed_role = sts_conn.assume_role( 
         app.config['UPLOADER_ROLE_ARN'],
         'temp_upload_creds', 
@@ -42,10 +44,10 @@ def generate_policy_string( prefix ):
           ],
           "Sid": "Stmt1373903371000",
           "Resource": [
-            "arn:aws:s3:::%(bucket)s/%(prefix)s/*"
+            "arn:aws:s3:::%(bucket)s/%(prefix)s*"
           ],
           "Effect": "Allow"
         }
       ]
-    }""" % { 'bucket': app.config['UPLOAD_BUCKET'], 'prefix': prefix }
+    }""" % { 'bucket': app.config['PIC_BUCKET'], 'prefix': prefix }
     return policy_string

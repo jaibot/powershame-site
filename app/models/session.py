@@ -27,7 +27,7 @@ class Session(db.Model):
         self.user = user.id
         self.name = name
         self.source = client.id
-        self.status = IN_PROGRESS
+        self.status = self.IN_PROGRESS
         db.session.add(self)
         db.session.commit()
     def age_in_seconds(self):
@@ -36,7 +36,7 @@ class Session(db.Model):
         return {
                 'name': self.name,
                 'id':   self.id,
-                'prefix': '/'.join( ( self.user, self.id ) ) + '/'
+                'prefix': str( self.user ) + '/' + str( self.id ) + '/' 
             }
     def finish( self ):
         send_message({'session_id':self.id, }, app.config['RENDERING_QUEUE'] )

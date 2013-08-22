@@ -33,15 +33,15 @@ class Client(db.Model):
 
     def serialize( self ):
         return {
-            'user':     models.user.load_user( self.user ).username,
+            'user':     self.get_user().username,
             'name':     self.name,
             'valid':    self.valid,
             'token':    self.token
         }
 
     def verify(self):
-        user = load_user( self.user )
-        return pbkdf2_sha512.verify( self.token, user.password )
+        user = self.get_user()
+        return pbkdf2_sha512.verify( user.password, self.token )
 
     def get_user(self):
         return models.user.load_user( self.user )
@@ -50,4 +50,4 @@ class Client(db.Model):
         return '%(name)s (%(user)s)' % { 'name':str(self.name), 'user': str(self.get_user()) }
 
 def get_client_by_token( token ):
-    return Client.query.filter(token=token).first() or None
+    return Client.query.filter_by(token=token).first() or None

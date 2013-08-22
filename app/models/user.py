@@ -2,6 +2,7 @@ from app import app
 from app import db
 from app import login_manager
 from app.models.client import Client
+from app.models.upload_creds import UploadCreds
 from app.models.contact_info import ContactInfo
 from app.models.user_shamers import user_shamers
 from passlib.hash import pbkdf2_sha512
@@ -54,13 +55,14 @@ class User(db.Model):
 
     def get_upload_creds( self ):
         """Return a good credential (if it exists) or None"""
+        return  UploadCreds( self ) #REMOVE
         creds = self.upload_creds.first()
         if not creds or creds.expired():
-            from app.controller import new_upload_creds
-            status, creds = new_upload_creds( self )
+            creds = UploadCreds( self )
         return creds
+
     def can_add_client( self ):
-        return True #TODO: limit client registration
+        return len( self.clients ) < app.config['MAX_CLIENTS_PER_USER']
 
     def __repr__(self):
         return 'User: %(username)s' % {'username': self.username} 

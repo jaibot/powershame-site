@@ -22,20 +22,20 @@ FAIL,OK=0,1
 def create_session( user, name ):
     pass #TODO
 
-def get_or_update_upload_creds( user ):
-    all_creds = user.upload_creds.all()
-    if len(all_creds)==0:
-        return new_upload_creds( user )
-    elif len(all_creds)>1: #covering the weird case where the user got extra creds
-        all_creds.sort( key = lambda x: x.expiration )
-        for c in all_creds[:-1]:
-            db.session.delete( c )
-        db.session.commit()
-    creds = all_creds[-1]
-    if creds.expired():
-        return new_upload_creds( user )
-    else:
-        return OK, creds
+#def get_or_update_upload_creds( user ):
+#    all_creds = user.upload_creds.all()
+#    if len(all_creds)==0:
+#        return new_upload_creds( user )
+#    elif len(all_creds)>1: #covering the weird case where the user got extra creds
+#        all_creds.sort( key = lambda x: x.expiration )
+#        for c in all_creds[:-1]:
+#            db.session.delete( c )
+#        db.session.commit()
+#    creds = all_creds[-1]
+#    if creds.expired():
+#        return new_upload_creds( user )
+#    else:
+#        return OK, creds
 
 def new_upload_creds( user ):
     old_creds = user.upload_creds.first()
