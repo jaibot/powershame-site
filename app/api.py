@@ -12,6 +12,8 @@ import requests
 from werkzeug.datastructures import MultiDict
 from functools import wraps
 
+import logging
+
 class HTTPCode:
     ok = 200
     bad_request=400
@@ -49,6 +51,7 @@ def api(required=None):
                     return jsonify(response), HTTPCode.bad_request
                 return f(*args, **kwargs)
             except Exception as e:
+                logging.critical(str(e), exc_info=1)
                 return jsonify({'message':'Something went horribly wrong'}),HTTPCode.server_error
                 #TODO: Log and alert whatever disaster just happened
         return apied_f
@@ -102,10 +105,11 @@ def register_session(*args, **kwargs):
 @api()
 @auth_required
 def complete_session( *args, **kwargs ):
-    if 'id' in request.json():
+    user=kwargs['user']
+    if 'id' in request.json:
         session = Session.query.get( request.json['id'] )
-    elif 'name' in request.json():
-        name=request.json()['name']
+    elif 'name' in request.json:
+        name=request.json['name']
         session = _first_or_none( filter(lambda x:x.name==name, user.sessions) )
     else:
         return jsonify( {'message':'Need to supply session id or name'} ), HTTPCode.bad_request

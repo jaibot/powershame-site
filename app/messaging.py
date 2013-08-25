@@ -1,6 +1,13 @@
+from app import app
+import logging
+import pika
+import json
+
+
 def send_message( message, queue ):
     """queue something (via rabbitmq)"""
     # RabbitMQ setup
+    logging.debug('preparing messge for queue: %s'%str(message) )
     connection = pika.BlockingConnection(
         pika.ConnectionParameters( host=app.config['QUEUE_HOST'] ) )
     channel = connection.channel()
@@ -12,9 +19,12 @@ def send_message( message, queue ):
     channel.basic_publish(
         exchange      = '',
         routing_key   = queue,
-        body          = message,
-        properties    = pika.BasicProperties(
-            delivery_mode = 2,         )
+        body          = json.dumps(message),
+        properties    = pika.BasicProperties( delivery_mode = 2 )
     )
     connection.close()
-    return OK, session
+    logging.debug('sent message %s'%str(message) )
+    return True
+
+if __name__=='__main__':
+    send_message( {'session_id':61},'rendering' )

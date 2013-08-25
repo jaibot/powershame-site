@@ -39,6 +39,7 @@ class Session(db.Model):
                 'prefix': str( self.user ) + '/' + str( self.id ) + '/' 
             }
     def finish( self ):
+        db.session.flush()
         send_message({'session_id':self.id, }, app.config['RENDERING_QUEUE'] )
 
     def __repr__(self):
