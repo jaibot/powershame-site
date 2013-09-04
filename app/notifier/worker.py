@@ -15,11 +15,12 @@ HOST = app.config['QUEUE_HOST']
 RENDERING_QUEUE = app.config['RENDERING_QUEUE']
 NOTIFICATION_QUEUE = app.config['NOTIFICATION_QUEUE']
 
-def send_notification_email( session, url ):
+def send_notification_email( session ):
     db.session.rollback()
     logging.debug('starting notification process')
     user = User.query.get( session.user )
     shamers = session.shamers
+    url = session.url
     addresses = [ shamer.identifier for shamer in shamers ]
     user_email = user.contact_info.first().identifier
     addresses.append( user_email )
@@ -41,9 +42,7 @@ def notification_worker(ch, method, properties, body):
     db.session.rollback()
     session_id = json.loads(body)['session_id']
     session = Session.query.filter_by( id=session_id ).first()
-    url = json.loads(body)['url']
-    print url
-    send_notification_email( session, url )
+    send_notification_email( session )
     print " [x] Done"
     ch.basic_ack(delivery_tag = method.delivery_tag)
 

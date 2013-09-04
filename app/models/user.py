@@ -84,7 +84,7 @@ def get_user_by_token( token_string ):
 def get_user_by_login( username, password ):
     """Return user corresponding to correct username/pw combination or None """
     user = User.query.filter_by( username = username ).first()
-    if user.check_pw( password ):
+    if user and user.check_pw( password ):
         return user
     return None
 

@@ -10,3 +10,6 @@ class SignupForm(Form):
     username = TextField('username', validators = [Required()])
     password = PasswordField('password', validators = [Required()])
     email    = TextField('email', validators = [Required()])
+
+class ShamerForm(Form):
+    email_address = TextField('email', validators=[Required()] )

@@ -1,8 +1,11 @@
 import subprocess
 import os
+import time
+from datetime import datetime, timedelta
 from boto.exception import S3PermissionsError, AWSConnectionError, S3ResponseError
 from boto.s3.connection import S3Connection
 from boto.s3.key import Key
+from app import app
 
 class SessionRenderer( object ):
     def __init__( self, access_key, secret_key, shots_bucket, video_bucket, working_dir ):
@@ -42,11 +45,12 @@ class SessionRenderer( object ):
     def upload_video( self, video_path, key_path ):
         bucket = self.s3_conn.get_bucket( self.video_bucket, validate=False )
         key = Key(bucket)
-        #bucket_key = username+'/'+session_name+'.mkv'
         key.key = key_path
-        key.set_contents_from_filename( video_path )
-        url = self.s3_conn.generate_url(3600*48, 'GET', bucket=self.video_bucket, key=key_path) #THIS IS HACKY - write seperate temp-url getter somewhere else
-        return url
+        key.set_contents_from_filename( video_path, headers={'Content-Type':'video/mp4'} )
+        lifetime = int( app.config['VID_URL_LIFETIME'] )
+        expiration = datetime.now() + timedelta(seconds=lifetime)
+        url = self.s3_conn.generate_url( lifetime, 'GET', bucket=self.video_bucket, key=key_path) 
+        return url, expiration
 
 # below: utility functions
 def is_shot( key ):
@@ -60,10 +64,13 @@ def ffmpeg_str( dir, outfile ):
     #    -r 1: framerate (1/s=s seconds per frame)
     #    -i %s/%%04d.png: input is all files like dir/0001.png
     #    -vcodec libvpx: x264 codec
+    #   -f mp4: output container (needed for iOS)
     # TODO: calculate resolution based off original resolution
     # TODO: alter framerate to speed up longer videos
     # TODO: time OSD and/or titlecards
-    base= "ffmpeg -y -f image2 -r 3 -i %s/%%04d.png -vcodec libx264 -s 800x450 %s" % (dir, outfile )
+    seconds_per_frame = app.config['SECONDS_PER_FRAME']
+    framerate = 1.0/seconds_per_frame
+    base= "ffmpeg -y -f image2 -r %f -i %s/%%04d.png -vcodec libx264 -s 800x450 -f mp4 %s" % (framerate, dir, outfile )
     return base.split(' ')
 
 if __name__=='__main__':

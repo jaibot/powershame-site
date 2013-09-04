@@ -1,5 +1,5 @@
 from flask import render_template, redirect, request, abort,  flash
-from flask.ext.login import login_user
+from flask.ext.login import login_user, logout_user, current_user
 
 from app import app
 from app import db
@@ -7,22 +7,22 @@ from controller import render_session
 
 from app.models.user import User, get_user_by_login, UsernameExists
 
-from forms import LoginForm, SignupForm
+from forms import LoginForm, SignupForm, ShamerForm
 
 import requests
 from werkzeug.datastructures import MultiDict
 
-@app.route('/test')
-def testing():
-    render_session('jai','20130806174953')
-    return render_template('index.html',user='testing...')
-
 @app.route('/')
 def index():
-    return render_template('index.html',user='jai')
+    return standard_render('index.html')
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return standard_render('index.html')
 
 @app.route('/login', methods = ['GET','POST'] )
-def login_view():
+def login():
     form = LoginForm()
     if form.validate_on_submit():
         username = form.username.data
@@ -33,9 +33,9 @@ def login_view():
         else:
             login( user, request )
         return redirect(request.args.get('next') or '/')
-    return render_template('login.html', 
+    return standard_render('login.html', 
         title = 'Sign In',
-        form = form)
+        form = form )
 
 @app.route('/signup', methods = ['GET','POST'] )
 def signup():
@@ -52,7 +52,25 @@ def signup():
             login( user, request )
     else:
         flash('form did not validate')
-    return render_template('signup.html', form = form)
+    return standard_render('signup.html', form = form )
+
+@app.route( app.config['URLS']['sessions'],methods = ['GET','POST'] )
+def list_sessions():
+    return standard_render( 'list_sessions.html' )
+
+@app.route( app.config['URLS']['shamers'], methods=['GET','POST'] )
+def shamers():
+    form = ShamerForm()
+    if form.validate_on_submit():
+        pass
+    return standard_render( 'shamers.html', form=form )
+
+
+def standard_render( template, **kwargs ):
+    kwargs['user'] = current_user
+    kwargs['strings'] = app.config['STRINGS']
+    kwargs['urls'] = app.config['URLS']
+    return render_template( template, **kwargs )
 
 def login( user, request ):
     success = login_user( user )
@@ -60,16 +78,3 @@ def login( user, request ):
         flash('Logged in successfully!')
     else:
         flash('Something went wrong with login...')
-
-#@app.route('/send_message.html')
-#def mail_test():
-#    a = requests.post(
-#        "https://api.mailgun.net/v2/powershame.mailgun.org/messages",
-#        auth=("api", 'key-231mtboe2i9bwkxgw5pses5u-rw6u-j4' ),
-#        data={"from": 'jai@powershame.mailgun.org',
-#              "to": 'jai@jaibot.com',
-#              "subject": "Powershame ON THE INTERNET",
-#              "text": "hey you" }
-#    )
-#    return str(a)
-

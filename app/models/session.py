@@ -21,6 +21,8 @@ class Session(db.Model):
     status = db.Column( db.Integer )
     start_time = db.Column(db.DateTime)
     end_time = db.Column(db.DateTime)
+    url = db.Column( db.Unicode(2048) )
+    url_expire = db.Column( db.DateTime )
     shamers = db.relationship('ContactInfo', secondary=session_shamers )
     IN_PROGRESS, RENDERING, FINISHED=1,2,3
     def __init__( self, user, name, client ):
@@ -39,7 +41,6 @@ class Session(db.Model):
                 'prefix': str( self.user ) + '/' + str( self.id ) + '/' 
             }
     def finish( self ):
-        db.session.flush()
         send_message({'session_id':self.id, }, app.config['RENDERING_QUEUE'] )
 
     def __repr__(self):

@@ -5,6 +5,7 @@ from app.models.session import Session
 import pika
 import json
 import logging
+from datetime import datetime
 from session_renderer import SessionRenderer
 
 HOST = app.config['QUEUE_HOST']
@@ -48,22 +49,23 @@ def render_worker(ch, method, properties, body):
         if not session:
             logging.debug('failed on session: %s'%str(session))
             ch.basic_reject(delivery_tag = method.delivery_tag)
-            return #FIX LATER - send FAILURE ack
+            return 
         logging.debug('session: %s'%str(session))
         user_id = str(session.user)
         prefix = '/'.join( (user_id, str(session_id)) ) +'/'
         key_path = user_id + '/' + session.name + '.mkv'
-        url = renderer.render( prefix, key_path )
-        #TODO: update db
-        send_notification( json.dumps({ 'session_id': session_id, 'url': url }) )
-    except KeyError:
-        print 'ohno'
+        url, expiration = renderer.render( prefix, key_path )
+        session.url_expire = expiration
+        session.url = url
+        db.session.commit()
+        send_notification( json.dumps({ 'session_id': session_id }) )
+        logging.debug('finished rendering session: %s'%str(session))
+        ch.basic_ack(delivery_tag = method.delivery_tag)
+        logging.debug('ack tack')
+    except Exception as e:
+        logging.critical( e )
+        ch.basic_reject(delivery_tag = method.delivery_tag)
         return
-    except IOError:
-        pass
-    logging.debug('finished rendering session: %s'%str(session))
-    ch.basic_ack(delivery_tag = method.delivery_tag)
-    logging.debug('ack tack')
 
 root = logging.getLogger()
 

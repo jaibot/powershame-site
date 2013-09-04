@@ -7,3 +7,4 @@ Sessions
     Implement session limits
 views.py
     DRY user-getting-from-token
+remove templates (use CDN for everything)
