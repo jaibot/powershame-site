@@ -1,13 +1,13 @@
 from app import db
 from app import app
 from app.permission_generator import get_temp_upload_creds
-from datetime import datetime, timedelta
+import time
 
 class UploadCreds(db.Model):
     __tablename__='upload_creds'
     id =        db.Column( 'id', db.Integer, primary_key=True )
     user =      db.Column( 'user', db.Integer, db.ForeignKey('user.id'), index=True )
-    expiration= db.Column( 'expiration', db.DateTime )
+    expiration= db.Column( 'expiration', db.Float )
     access_id = db.Column( 'access_id', db.String(256) )
     secret_key = db.Column( 'secret_key', db.String(256) )
     session_token = db.Column( 'session_token', db.String(2048) )
@@ -37,19 +37,20 @@ class UploadCreds(db.Model):
             # good for a few more seconds, but that's fine
             if not duration:
                 duration = app.config['UPLOAD_CREDS_LIFETIME']
-            self.expiration = expiration or datetime.now()+timedelta( seconds=duration )
-            try:
-                credential = get_temp_upload_creds( prefix=self.prefix, lifetime = duration )
-                #TODO: sane error handling
-            except:
-                return None
+            self.expiration = expiration or ( time.time() + duration )
+            credential = get_temp_upload_creds( prefix=self.prefix, lifetime = duration )
             self.access_id = credential.access_key
             self.secret_key = credential.secret_key
             self.session_token = credential.session_token
         db.session.add( self )
         db.session.commit()
     def expired( self ):
-        return datetime.now() > self.expiration
+        print time.time()
+        print self.expiration
+        print time.time() > self.expiration
+        if self.expiration:
+            return time.time() > self.expiration
+        return True
     def serialize( self ):
         return {
                 'user':         self.user,
@@ -57,7 +58,7 @@ class UploadCreds(db.Model):
                 'access_key':   self.access_id,
                 'secret_key':   self.secret_key,
                 'session_token':self.session_token,
-                'expiration':   str(self.expiration)
+                'expiration':   self.expiration
             }
     def __repr__( self ):
         return str( self.serialize() )

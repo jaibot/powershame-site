@@ -85,6 +85,7 @@ def register_client( *args, **kwargs ):
 @auth_required
 def request_upload_creds(*args, **kwargs):
     user = kwargs['user']
+    db.session.commit()
     permissions = user.get_upload_creds().serialize()
     if permissions:
         permissions['bucket_name'] = app.config['PIC_BUCKET']

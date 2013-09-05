@@ -55,10 +55,12 @@ class User(db.Model):
 
     def get_upload_creds( self ):
         """Return a good credential (if it exists) or None"""
-        return  UploadCreds( self ) #REMOVE
-        creds = self.upload_creds.first()
-        if not creds or creds.expired():
-            creds = UploadCreds( self )
+        creds = self.upload_creds.all()
+        for c in creds:
+            if c.expired():
+                db.session.delete( c )
+        db.session.commit( )
+        creds = self.upload_creds.first() or UploadCreds( self )
         return creds
 
     def can_add_client( self ):
