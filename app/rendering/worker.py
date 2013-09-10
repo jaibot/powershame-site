@@ -41,20 +41,11 @@ def send_notification( message ):
 def render_worker(ch, method, properties, body):
     db.session.rollback()
     logging.debug('starting render process')
-    vars = json.loads( body )
-    logging.debug('got: %s'%str(vars))
+    logging.debug('got: %s'% body )
     try:
-        session_id = int(vars['session_id'])
-        session = Session.query.get( session_id )
-        if not session:
-            logging.debug('failed on session: %s'%str(session))
-            ch.basic_reject(delivery_tag = method.delivery_tag)
-            return 
-        logging.debug('session: %s'%str(session))
-        user_id = str(session.user)
-        prefix = '/'.join( (user_id, str(session_id)) ) +'/'
+        session = json.loads( body )
         key_path = user_id + '/' + session.name + '.mkv'
-        url, expiration = renderer.render( prefix, key_path )
+        url, expiration = renderer.render( session.id, session.screenshots )
         session.url_expire = expiration
         session.url = url
         db.session.commit()
@@ -67,20 +58,21 @@ def render_worker(ch, method, properties, body):
         ch.basic_reject(delivery_tag = method.delivery_tag)
         return
 
-root = logging.getLogger()
+if __name__ == '__main__':
+    root = logging.getLogger()
 
-ch = logging.StreamHandler(sys.stdout)
-ch.setLevel(logging.DEBUG)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-ch.setFormatter(formatter)
-root.addHandler(ch)
-root.setLevel(logging.DEBUG)
+    ch = logging.StreamHandler(sys.stdout)
+    ch.setLevel(logging.DEBUG)
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    ch.setFormatter(formatter)
+    root.addHandler(ch)
+    root.setLevel(logging.DEBUG)
 
-connection = pika.BlockingConnection(pika.ConnectionParameters(
-        host = HOST ))
-channel = connection.channel()
-channel.queue_declare(queue=RENDERING_QUEUE, durable=True)
-channel.basic_qos(prefetch_count=1)
-channel.basic_consume(render_worker,
-                      queue=RENDERING_QUEUE)
-channel.start_consuming()
+    connection = pika.BlockingConnection(pika.ConnectionParameters(
+            host = HOST ))
+    channel = connection.channel()
+    channel.queue_declare(queue=RENDERING_QUEUE, durable=True)
+    channel.basic_qos(prefetch_count=1)
+    channel.basic_consume(render_worker,
+                          queue=RENDERING_QUEUE)
+    channel.start_consuming()

@@ -101,26 +101,28 @@ def register_session(*args, **kwargs):
     session = Session( kwargs['user'], session_name, kwargs['client'] )
     return jsonify( session.serialize() ), HTTPCode.ok
 
-
 @app.route('/api/complete_session', methods=['POST'])
 @api()
 @auth_required
 def complete_session( *args, **kwargs ):
     user=kwargs['user']
+    session = None
     if 'id' in request.json:
         session = Session.query.get( request.json['id'] )
+        if not session.user==user.id:
+            return jsonify( {'message':'Session does not exist'} ), HTTPCode.bad_request
     elif 'name' in request.json:
         name=request.json['name']
         session = _first_or_none( filter(lambda x:x.name==name, user.sessions) )
-    else:
+    if not session:
         return jsonify( {'message':'Need to supply session id or name'} ), HTTPCode.bad_request
-    session.finish()
-    return jsonify( {'message':'Session is rendering'} ), HTTPCode.ok 
+
+    else:
+        session.finish( serialized_data=request.json )
+        return jsonify( {'message':'Session is rendering'} ), HTTPCode.ok 
 
 def _first_or_none(l,n=0):
     if len(l)>n:
         return l[n]
     else:
         return None
-
-

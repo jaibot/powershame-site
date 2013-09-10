@@ -38,10 +38,17 @@ class Session(db.Model):
         return {
                 'name': self.name,
                 'id':   self.id,
-                'prefix': str( self.user ) + '/' + str( self.id ) + '/' 
+                'user': self.user,
+                'prefix': str( self.user ) + '/'
             }
-    def finish( self ):
-        send_message({'session_id':self.id, }, app.config['RENDERING_QUEUE'] )
+    def finish( self, serialized_data ):
+        #send_message({'session_id':self.id, }, app.config['RENDERING_QUEUE'] )
+        session_data = self.serialize()
+        if not all( x['key'].startswith(str(self.user)+'/') for x in serialized_data['screenshots']):
+            logging.error('Session contained screenshots not from user')
+            return False
+        session_data['screenshots'] = serialized_data['screenshots']
+        send_message( serialized_data, app.config['RENDERING_QUEUE'] )
 
     def __repr__(self):
         return '%(name)s (%(user)s)' % {'name': self.name, 'user': str(load_user( self.user )) }

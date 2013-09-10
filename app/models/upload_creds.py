@@ -7,7 +7,7 @@ class UploadCreds(db.Model):
     __tablename__='upload_creds'
     id =        db.Column( 'id', db.Integer, primary_key=True )
     user =      db.Column( 'user', db.Integer, db.ForeignKey('user.id'), index=True )
-    expiration= db.Column( 'expiration', db.Float )
+    expiration= db.Column( 'expiration', db.BigInteger )
     access_id = db.Column( 'access_id', db.String(256) )
     secret_key = db.Column( 'secret_key', db.String(256) )
     session_token = db.Column( 'session_token', db.String(2048) )

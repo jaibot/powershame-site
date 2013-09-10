@@ -19,27 +19,28 @@ class SessionRenderer( object ):
     def set_s3_conn( self ):
         self.s3_conn =  S3Connection(   self.access_key, 
                                         self.secret_key )
-    def render( self, prefix, video_key ):
-        working_path = os.path.join( self.working_dir, 'powershame-rendering', prefix )
+    def render( self, session_id, screenshots ):
+        working_path = os.path.join( self.working_dir, 'powershame-rendering', str(session_id) )
+        shots_path =os.path.join( working_path, 'shots' )
         video_path=os.path.join( working_path, 'session.mkv' )
         try:
             os.makedirs( working_path )
         except OSError:
             pass
-        self.download_shots( working_path, prefix )
-        self.make_video( working_path, video_path )
-        return self.upload_video( video_path, video_key )
+        self.download_shots( shots_path, screenshots )
+        self.make_video( shots_path, video_path )
+        return self.upload_video( video_path, str(session_id)+'.mkv' )
 
-    def download_shots( self, working_path, prefix ):
-        bucket = self.s3_conn.get_bucket( self.shots_bucket )
-        shot_keys_to_download = filter( is_shot, bucket.list( prefix=prefix ) )
-        shot_keys_to_download.sort( key = lambda shot_key: shot_key.name )
-        for i,shot in enumerate(shot_keys_to_download):
+    def download_shots( self, working_path, screenshots ):
+        for i,s in enumerate(screenshots):
+            bucket = self.s3_conn.get_bucket( s['bucket'] )
+            key = bucket.get_key( s['key'] )
             filename = '%04d.png'%i
-            shot.get_contents_to_filename( os.path.join( working_path, filename ) )
+            key.get_contents_to_filename( os.path.join( working_path, filename ) )
 
-    def make_video( self, working_path, video_filename ):
-        movie_maker = ffmpeg_str( working_path, video_filename )
+    def make_video( self, shots_path, video_filename ):
+        num_shots = len( os.listdir( shots_path ) )
+        movie_maker = ffmpeg_str( working_path, video_filename, num_shots )
         p = subprocess.call( movie_maker )
 
     def upload_video( self, video_path, key_path ):
@@ -52,14 +53,10 @@ class SessionRenderer( object ):
         url = self.s3_conn.generate_url( lifetime, 'GET', bucket=self.video_bucket, key=key_path) 
         return url, expiration
 
-# below: utility functions
-def is_shot( key ):
-    return key.name.endswith('.png')
-
-def ffmpeg_str( dir, outfile ):
+def ffmpeg_str( dir, outfile, num_shots ):
     """compose string for rendering call"""
     #explanation of arguments to ffmpeg:
-    #    -y: overwrite output file (not an issue in the current version, but preserving expected behavior)
+    #    -y: overwrite output file
     #    -f image2: input type
     #    -r 1: framerate (1/s=s seconds per frame)
     #    -i %s/%%04d.png: input is all files like dir/0001.png
@@ -68,7 +65,8 @@ def ffmpeg_str( dir, outfile ):
     # TODO: calculate resolution based off original resolution
     # TODO: alter framerate to speed up longer videos
     # TODO: time OSD and/or titlecards
-    seconds_per_frame = app.config['SECONDS_PER_FRAME']
+    vid_length = min( app.config['MAX_VID_TIME'], len(num_shots)*app.config['SECONDS_PER_FRAME'] )
+    seconds_per_frame = vid_length//float(num_shots)
     framerate = 1.0/seconds_per_frame
     base= "ffmpeg -y -f image2 -r %f -i %s/%%04d.png -vcodec libx264 -s 800x450 -f mp4 %s" % (framerate, dir, outfile )
     return base.split(' ')
