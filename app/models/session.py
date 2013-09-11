@@ -48,7 +48,7 @@ class Session(db.Model):
             logging.error('Session contained screenshots not from user')
             return False
         session_data['screenshots'] = serialized_data['screenshots']
-        send_message( serialized_data, app.config['RENDERING_QUEUE'] )
+        send_message( session_data, app.config['RENDERING_QUEUE'] )
 
     def __repr__(self):
         return '%(name)s (%(user)s)' % {'name': self.name, 'user': str(load_user( self.user )) }

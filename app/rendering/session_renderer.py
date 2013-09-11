@@ -1,6 +1,7 @@
 import subprocess
 import os
 import time
+import logging
 from datetime import datetime, timedelta
 from boto.exception import S3PermissionsError, AWSConnectionError, S3ResponseError
 from boto.s3.connection import S3Connection
@@ -21,10 +22,10 @@ class SessionRenderer( object ):
                                         self.secret_key )
     def render( self, session_id, screenshots ):
         working_path = os.path.join( self.working_dir, 'powershame-rendering', str(session_id) )
-        shots_path =os.path.join( working_path, 'shots' )
+        shots_path = os.path.join( working_path, 'shots' )
         video_path=os.path.join( working_path, 'session.mkv' )
         try:
-            os.makedirs( working_path )
+            os.makedirs( shots_path )
         except OSError:
             pass
         self.download_shots( shots_path, screenshots )
@@ -33,6 +34,8 @@ class SessionRenderer( object ):
 
     def download_shots( self, working_path, screenshots ):
         for i,s in enumerate(screenshots):
+            logging.debug( str(s) )
+            logging.debug( str(i) )
             bucket = self.s3_conn.get_bucket( s['bucket'] )
             key = bucket.get_key( s['key'] )
             filename = '%04d.png'%i
@@ -40,7 +43,7 @@ class SessionRenderer( object ):
 
     def make_video( self, shots_path, video_filename ):
         num_shots = len( os.listdir( shots_path ) )
-        movie_maker = ffmpeg_str( working_path, video_filename, num_shots )
+        movie_maker = ffmpeg_str( shots_path, video_filename, num_shots )
         p = subprocess.call( movie_maker )
 
     def upload_video( self, video_path, key_path ):
@@ -65,8 +68,11 @@ def ffmpeg_str( dir, outfile, num_shots ):
     # TODO: calculate resolution based off original resolution
     # TODO: alter framerate to speed up longer videos
     # TODO: time OSD and/or titlecards
-    vid_length = min( app.config['MAX_VID_TIME'], len(num_shots)*app.config['SECONDS_PER_FRAME'] )
-    seconds_per_frame = vid_length//float(num_shots)
+    logging.debug('num_shots: %d'%num_shots)
+    vid_length = min( app.config['MAX_VID_TIME'], num_shots*app.config['SECONDS_PER_FRAME'] )
+    logging.debug('vid length: %f'%vid_length)
+    seconds_per_frame = float(vid_length)/float(num_shots)
+    logging.debug('seconds/frame: %f'%seconds_per_frame)
     framerate = 1.0/seconds_per_frame
     base= "ffmpeg -y -f image2 -r %f -i %s/%%04d.png -vcodec libx264 -s 800x450 -f mp4 %s" % (framerate, dir, outfile )
     return base.split(' ')

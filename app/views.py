@@ -54,7 +54,7 @@ def signup():
         flash('form did not validate')
     return standard_render('signup.html', form = form )
 
-@app.route( app.config['URLS']['sessions'],methods = ['GET','POST'] )
+@stapp.route( app.config['URLS']['sessions'],methods = ['GET','POST'] )
 def list_sessions():
     return standard_render( 'list_sessions.html' )
 

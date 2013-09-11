@@ -39,24 +39,32 @@ def send_notification( message ):
     connection.close()
 
 def render_worker(ch, method, properties, body):
-    db.session.rollback()
     logging.debug('starting render process')
     logging.debug('got: %s'% body )
     try:
-        session = json.loads( body )
-        key_path = user_id + '/' + session.name + '.mkv'
-        url, expiration = renderer.render( session.id, session.screenshots )
-        session.url_expire = expiration
-        session.url = url
-        db.session.commit()
+        ps_session = json.loads( body )
+        for k in ps_session:
+            print k,ps_session[k]
+        key_path = str(ps_session['user']) + '/' + ps_session['name'] + '.mkv'
+        url, expiration = renderer.render( ps_session['id'], ps_session['screenshots'] )
+        session_id = ps_session['id']
+        update_session_db( session_id, url, expiration )
         send_notification( json.dumps({ 'session_id': session_id }) )
-        logging.debug('finished rendering session: %s'%str(session))
+        logging.debug('finished rendering session')
         ch.basic_ack(delivery_tag = method.delivery_tag)
-        logging.debug('ack tack')
     except Exception as e:
         logging.critical( e )
         ch.basic_reject(delivery_tag = method.delivery_tag)
         return
+    finally:
+        db.session.commit()
+
+def update_session_db( session_id, url, expiration ):
+    db.session.rollback()
+    session = Session.query.get( session_id )
+    session.url_expire = expiration
+    session.url = url
+    db.session.commit()
 
 if __name__ == '__main__':
     root = logging.getLogger()

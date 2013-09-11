@@ -116,7 +116,6 @@ def complete_session( *args, **kwargs ):
         session = _first_or_none( filter(lambda x:x.name==name, user.sessions) )
     if not session:
         return jsonify( {'message':'Need to supply session id or name'} ), HTTPCode.bad_request
-
     else:
         session.finish( serialized_data=request.json )
         return jsonify( {'message':'Session is rendering'} ), HTTPCode.ok 
