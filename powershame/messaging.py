@@ -1,4 +1,4 @@
-from app import app
+from powershame import app
 import logging
 import pika
 import json

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from app import app
+from powershame import app
 from boto import sts
 
 def get_temp_upload_creds( prefix, lifetime=None ):

@@ -1,11 +1,11 @@
 #TODO: UGH, lots of things to fix
-from app import app
-from app import db
-from app import controller
+from powershame import app
+from powershame import db
+from powershame import controller
 from controller import OK,FAIL
-from app.models.user import User, get_user_by_token, get_user_by_login
-from app.models.client import Client, get_client_by_token
-from app.models.session import Session
+from powershame.models.user import User, get_user_by_token, get_user_by_login
+from powershame.models.client import Client, get_client_by_token
+from powershame.models.session import Session
 
 from flask import request, abort, jsonify
 import requests

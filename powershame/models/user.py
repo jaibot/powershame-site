@@ -1,10 +1,10 @@
-from app import app
-from app import db
-from app import login_manager
-from app.models.client import Client
-from app.models.upload_creds import UploadCreds
-from app.models.contact_info import ContactInfo
-from app.models.user_shamers import user_shamers
+from powershame import app
+from powershame import db
+from powershame import login_manager
+from powershame.models.client import Client
+from powershame.models.upload_creds import UploadCreds
+from powershame.models.contact_info import ContactInfo
+from powershame.models.user_shamers import user_shamers
 from passlib.hash import pbkdf2_sha512
 
 shamers = db.Table('shamers',

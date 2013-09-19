@@ -1,5 +1,5 @@
-from app import app
-from app import db
+from powershame import app
+from powershame import db
 
 user_shamers = db.Table( 
     'user_shamers',

@@ -1,8 +1,8 @@
-from app import app
-from app import db
-from app.models.user import load_user
-from app.models.session_shamers import session_shamers
-from app.messaging import send_message
+from powershame import app
+from powershame import db
+from powershame.models.user import load_user
+from powershame.models.session_shamers import session_shamers
+from powershame.messaging import send_message
 import datetime
 
 class Session(db.Model):

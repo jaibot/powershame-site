@@ -1,6 +1,6 @@
-from app import app
-from app import db
-from app import models
+from powershame import app
+from powershame import db
+from powershame import models
 from passlib.hash import pbkdf2_sha512
 from datetime import datetime
 

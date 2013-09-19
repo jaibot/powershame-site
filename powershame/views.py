@@ -1,11 +1,10 @@
 from flask import render_template, redirect, request, abort,  flash
 from flask.ext.login import login_user, logout_user, current_user
 
-from app import app
-from app import db
-from controller import render_session
+from powershame import app
+from powershame import db
 
-from app.models.user import User, get_user_by_login, UsernameExists
+from powershame.models.user import User, get_user_by_login, UsernameExists
 
 from forms import LoginForm, SignupForm, ShamerForm
 
@@ -54,7 +53,7 @@ def signup():
         flash('form did not validate')
     return standard_render('signup.html', form = form )
 
-@stapp.route( app.config['URLS']['sessions'],methods = ['GET','POST'] )
+@app.route( app.config['URLS']['sessions'],methods = ['GET','POST'] )
 def list_sessions():
     return standard_render( 'list_sessions.html' )
 

@@ -1,5 +1,5 @@
-#from app import app
-#from app import db
+#from powershame import app
+#from powershame import db
 #from flask.ext.security import RoleMixin
 #
 #class Role(db.Model, RoleMixin):

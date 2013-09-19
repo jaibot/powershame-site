@@ -1,6 +1,6 @@
-from app import db
-from app import app
-from app.permission_generator import get_temp_upload_creds
+from powershame import db
+from powershame import app
+from powershame.permission_generator import get_temp_upload_creds
 import time
 
 class UploadCreds(db.Model):
