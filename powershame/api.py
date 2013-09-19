@@ -1,8 +1,6 @@
 #TODO: UGH, lots of things to fix
 from powershame import app
 from powershame import db
-from powershame import controller
-from controller import OK,FAIL
 from powershame.models.user import User, get_user_by_token, get_user_by_login
 from powershame.models.client import Client, get_client_by_token
 from powershame.models.session import Session
