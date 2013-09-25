@@ -1,7 +1,7 @@
 import os
 import sys
-from app import app,db,models
-from app.models.session import Session
+from powershame import app,db,models
+from powershame.models.session import Session
 import pika
 import json
 import logging

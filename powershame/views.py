@@ -61,7 +61,7 @@ def list_sessions():
 def shamers():
     form = ShamerForm()
     if form.validate_on_submit():
-        pass
+        user.add_shamer( form.email_address )
     return standard_render( 'shamers.html', form=form )
 
 
@@ -77,3 +77,5 @@ def login( user, request ):
         flash('Logged in successfully!')
     else:
         flash('Something went wrong with login...')
+
+def add_shamer( user, email ):

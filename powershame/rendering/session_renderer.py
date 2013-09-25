@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 from boto.exception import S3PermissionsError, AWSConnectionError, S3ResponseError
 from boto.s3.connection import S3Connection
 from boto.s3.key import Key
-from app import app
+from powershame import app
 
 class SessionRenderer( object ):
     def __init__( self, access_key, secret_key, shots_bucket, video_bucket, working_dir ):
