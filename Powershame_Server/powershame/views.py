@@ -3,6 +3,7 @@ from flask.ext.login import login_user, logout_user, current_user
 
 from powershame import app
 from powershame import db
+from powershame import ses_conn
 
 from powershame.models.user import User, get_user_by_login, UsernameExists
 
@@ -20,6 +21,7 @@ def logout():
     logout_user()
     return standard_render('index.html')
 
+#TODO: I am doing too many things here; refactor
 @app.route('/login', methods = ['GET','POST'] )
 def login():
     form = LoginForm()
@@ -45,6 +47,10 @@ def signup():
         email    = form.email.data
         try:
             user = User( username, password, email )
+            ses_conn.send_email( 'jai@powershame.com',
+                    'Welcome to Powershame!',
+                    'Welcome to Powershame!',
+                    email)
         except UsernameExists:
             flash('Sorry, someone already has that username!')
         else:
@@ -78,4 +84,4 @@ def login( user, request ):
     else:
         flash('Something went wrong with login...')
 
-def add_shamer( user, email ):
+#def add_shamer( user, email ):

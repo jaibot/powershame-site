@@ -1,5 +1,6 @@
 *.pyc
-.env
 config.py
 private_config.py
 venv
+dist
+*.egg-info
