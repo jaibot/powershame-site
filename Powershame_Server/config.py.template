@@ -1,6 +1,12 @@
 # -*- coding: utf8 -*-
 
-CSRF_ENABLED = True
+import os
+
+# dev stuff
+DEBUG = True
+TESTING = True
+LOG_LEVEL = os.environ.get('LOG_LEVEL', 'DEBUG')
+
 
 # AUTHENTICATION STUFF **************************
 # Two different kinds of authentication: HTTP sessions (web interface)
@@ -26,7 +32,7 @@ MAX_VID_TIME = 45.0
 RENDERING_QUEUE = 'rendering'
 NOTIFICATION_QUEUE = 'notification'
 
-
+#STRINGS TODO: move these to their own file
 STRINGS = {
         "app_name":         "Powershame",
         "your_sessions":    "Sessions",
@@ -34,35 +40,34 @@ STRINGS = {
         "about":            "How Does This Work?"
 }
 
+#TODO: move URLs to their own file
 URLS = {
         "sessions":     "/sessions",
         "shamers":      "/shamers",
-        "login":	"/login"
+        "login":	"/login",
+        "logout":	"/logout",
+        "signup":   "/signup"
         }
 
+#Secure forms
+CSRF_ENABLED = True
+SECRET_KEY = 'CHANGEME for security and stuff'
 
-# PRIVATE STUFF *****************************8
+#DB connection
+SQLALCHEMY_DATABASE_URI = 'mysql://username:password@server/db'
 
-from private_config import *
-# private_config stuff:
-#DEBUG = True
-#TESTING = True
-#LOG_LEVEL = os.environ.get('LOG_LEVEL', 'DEBUG')
-#
-##Secure forms
-#   SECRET_KEY  = ''            # CSRF key
-#
-##DB connection
-#   SQLALCHEMY_DATABASE_URI  = ''
-#
-##AWS stuff
-#   ISSUER_KEY = ''             # IAM ID for issuing upload creds
-#   ISSUER_SECRET = ''          # IAM secret for issuing upload creds
-#   UPLOADER_ROLE_ARN  = ''     # IAM role used for generating upload creds
-#   UPLOAD_BUCKET  = ''         # s3 bucket for screenshot uploads
-#   RENDERER_KEY  = ''          # IAM ID for rendering videos
-#   RENDERER_SECRET  = ''       # IAM secret for rendering videos
-#   VID_BUCKET  = ''            # s3 bucket for rendered powershame sessions
+#AWS stuff
+ISSUER_KEY=''
+ISSUER_SECRET=''
+UPLOADER_ROLE_ARN = ''
+PIC_BUCKET = ''
+RENDERER_KEY = ''
+RENDERER_SECRET = ''
+VID_BUCKET = ''
+#SES
+SES_REGION=''
+SES_KEY=''
+SES_SECRET=''
 
-## messaging queue host
-#QUEUE_HOST = 'localhost'
+# messaging queue host
+QUEUE_HOST = 'localhost'

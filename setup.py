@@ -4,7 +4,7 @@ setup(
     name='Powershame Server',
     version='0.1',
     long_description=__doc__,
-    packages=['powershame'],
+    packages=['Powershame_Server'],
     include_package_data=True,
     zip_safe=False,
     install_requires=[
