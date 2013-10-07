@@ -1,7 +1,7 @@
 from flask import render_template, redirect, request, abort,  flash
 from flask.ext.login import login_user, logout_user, current_user
 
-from powershame import app
+from powershame import app, db, strings, urls
 from powershame import db
 
 from powershame.models.user import User, get_user_by_login, UsernameExists
@@ -67,8 +67,8 @@ def shamers():
 
 def standard_render( template, **kwargs ):
     kwargs['user'] = current_user
-    kwargs['strings'] = app.config['STRINGS']
-    kwargs['urls'] = app.config['URLS']
+    kwargs['strings'] = strings.Strings
+    kwargs['urls'] = urls.Urls
     return render_template( template, **kwargs )
 
 def login( user, request ):
