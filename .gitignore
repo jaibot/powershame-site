@@ -3,3 +3,4 @@ config.py
 venv
 dist
 *.egg-info
+Powershame_Server
