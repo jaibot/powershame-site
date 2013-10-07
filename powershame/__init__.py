@@ -11,4 +11,9 @@ db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+import logging
+ch = logging.FileHandler( app.config['LOG_FILE'] )
+ch.setLevel(logging.DEBUG)
+app.logger.addHandler(ch)
+
 from powershame import views, api, models

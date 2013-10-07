@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import os
+os.environ['POWERSHAME_CONFIG']=os.getcwd()+'/config.py'
 from powershame import app
 
-os.environ['POWERSHAME_CONFIG']=os.getcwd+'config.py'
 app.run(debug=True)
