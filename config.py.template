@@ -1,68 +1,74 @@
 # -*- coding: utf8 -*-
+import os
 
-CSRF_ENABLED = True
+# dev stuff
+DEBUG =
+TESTING =
+DEPLOY =
+LOG_LEVEL =
+
+CSRF_ENABLED =
 
 # AUTHENTICATION STUFF **************************
 # Two different kinds of authentication: HTTP sessions (web interface)
 # and client tokens (for running sessions, etc). These should probably
 # be separated, eventually.
 # API client authentication
-API_TOKEN_HEADER='API-Token'
+API_TOKEN_HEADER=
 # HTTP session authentication
-SECURITY_TOKEN_AUTHENTICATION_HEADER='Authentication-Token'
+SECURITY_TOKEN_AUTHENTICATION_HEADER=
 
 # USER STUFF ****************************************
 # How many seconds should upload credentials last?
-UPLOAD_CREDS_LIFETIME = 15*60 #this is actually the AWS minimum - 15mins, or 900 secs
-VID_URL_LIFETIME = 60*60*24 # video urls are good for 24 hours
-MAX_CLIENTS_PER_USER = 10
+UPLOAD_CREDS_LIFETIME =
+VID_URL_LIFETIME =
+MAX_CLIENTS_PER_USER =
 
 # RENDERING STUFF ********************************
-SECONDS_PER_FRAME = 0.2
-MAX_VID_TIME = 45.0
+SECONDS_PER_FRAME =
+MAX_VID_TIME =
 
 
 # MESSAGING STUFF **************************
-RENDERING_QUEUE = 'rendering'
-NOTIFICATION_QUEUE = 'notification'
+RENDERING_QUEUE =
+NOTIFICATION_QUEUE =
 
 
-STRINGS = {
+STRINGS =
         "app_name":         "Powershame",
         "your_sessions":    "Sessions",
         "your_shamers":     "Friends",
         "about":            "How Does This Work?"
 }
 
-URLS = {
+URLS =
         "sessions":     "/sessions",
         "shamers":      "/shamers",
-        "login":	"/login"
+        "profile":      "/profile",
+        "login":        "/login",
+        "logout":        "/logout",
+        "signup":       "/signup"
         }
 
 
-# PRIVATE STUFF *****************************8
-
-from private_config import *
-# private_config stuff:
-#DEBUG = True
-#TESTING = True
-#LOG_LEVEL = os.environ.get('LOG_LEVEL', 'DEBUG')
-#
-##Secure forms
-#   SECRET_KEY  = ''            # CSRF key
-#
-##DB connection
-#   SQLALCHEMY_DATABASE_URI  = ''
-#
-##AWS stuff
-#   ISSUER_KEY = ''             # IAM ID for issuing upload creds
-#   ISSUER_SECRET = ''          # IAM secret for issuing upload creds
-#   UPLOADER_ROLE_ARN  = ''     # IAM role used for generating upload creds
-#   UPLOAD_BUCKET  = ''         # s3 bucket for screenshot uploads
-#   RENDERER_KEY  = ''          # IAM ID for rendering videos
-#   RENDERER_SECRET  = ''       # IAM secret for rendering videos
-#   VID_BUCKET  = ''            # s3 bucket for rendered powershame sessions
 
 ## messaging queue host
-#QUEUE_HOST = 'localhost'
+QUEUE_HOST =
+
+#Secure forms
+SECRET_KEY =
+
+#DB connection
+SQLALCHEMY_DATABASE_URI =
+
+#AWS stuff
+ISSUER_KEY=
+ISSUER_SECRET=
+UPLOADER_ROLE_ARN =
+PIC_BUCKET =
+RENDERER_KEY =
+RENDERER_SECRET =
+VID_BUCKET =
+
+# messaging queue host
+QUEUE_HOST =
