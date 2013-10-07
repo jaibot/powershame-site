@@ -2,6 +2,7 @@ from __future__ import with_statement
 from alembic import context
 from sqlalchemy import engine_from_config, pool
 from logging.config import fileConfig
+from powershame import app
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -36,7 +37,8 @@ def run_migrations_offline():
     script output.
 
     """
-    url = config.get_main_option("sqlalchemy.url")
+    #url = config.get_main_option("sqlalchemy.url")
+    url = app.config['SQLALCHEMY_DATABASE_URI']
     context.configure(url=url)
 
     with context.begin_transaction():
@@ -45,8 +47,7 @@ def run_migrations_offline():
 def run_migrations_online():
     # Override sqlalchemy.url value to application's value
     alembic_config = config.get_section(config.config_ini_section)
-    import config as app_config
-    alembic_config['sqlalchemy.url'] = app_config.SQLALCHEMY_DATABASE_URI
+    alembic_config['sqlalchemy.url'] = app.config['SQLALCHEMY_DATABASE_URI']
     engine = engine_from_config(
                 alembic_config,
                 prefix='sqlalchemy.',

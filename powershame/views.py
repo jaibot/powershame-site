@@ -78,4 +78,4 @@ def login( user, request ):
     else:
         flash('Something went wrong with login...')
 
-def add_shamer( user, email ):
+#def add_shamer( user, email ):
