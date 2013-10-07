@@ -20,9 +20,10 @@ def deploy():
     with cd('/tmp/powershame'):
         run('tar xzf /tmp/powershame.tar.gz')
     with cd('/tmp/powershame/%s' % dist ):
-        # now setup the package with our virtual environment's
-        # python interpreter
-        run('/home/powershame/.virtualenvs/powershame-site/bin/python setup.py install')
+        with prefix('source /home/powershame/.virtualenvs/powershame-site/bin/activate'):
+            # now setup the package with our virtual environment's
+            # python interpreter
+            run('python setup.py install')
     # now that all is set up, delete the folder again
     run('rm -rf /tmp/powershame /tmp/powershame.tar.gz')
     # and finally touch the .wsgi file so that mod_wsgi triggers
