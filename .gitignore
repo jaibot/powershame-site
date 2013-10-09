@@ -1,6 +1,6 @@
 *.pyc
 config.py
 venv
-dist
+dist*
 *.egg-info
 Powershame_Server
