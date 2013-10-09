@@ -1,7 +1,9 @@
 from flask import render_template, redirect, request, abort,  flash
 from flask.ext.login import login_user, logout_user, current_user
 
-from powershame import app
+from powershame import app, db
+from powershame.urls import Urls
+from powershame.strings import Strings
 from powershame import db
 
 from powershame.models.user import User, get_user_by_login, UsernameExists
@@ -15,12 +17,12 @@ from werkzeug.datastructures import MultiDict
 def index():
     return standard_render('index.html')
 
-@app.route('/logout')
+@app.route(Urls.logout)
 def logout():
     logout_user()
     return standard_render('index.html')
 
-@app.route('/login', methods = ['GET','POST'] )
+@app.route(Urls.login, methods = ['GET','POST'] )
 def login():
     form = LoginForm()
     if form.validate_on_submit():
@@ -36,7 +38,7 @@ def login():
         title = 'Sign In',
         form = form )
 
-@app.route('/signup', methods = ['GET','POST'] )
+@app.route(Urls.signup, methods = ['GET','POST'] )
 def signup():
     form = SignupForm()
     if form.validate_on_submit():
@@ -53,11 +55,11 @@ def signup():
         flash('form did not validate')
     return standard_render('signup.html', form = form )
 
-@app.route( app.config['URLS']['sessions'],methods = ['GET','POST'] )
+@app.route( Urls.sessions,methods = ['GET','POST'] )
 def list_sessions():
     return standard_render( 'list_sessions.html' )
 
-@app.route( app.config['URLS']['shamers'], methods=['GET','POST'] )
+@app.route( Urls.shamers, methods=['GET','POST'] )
 def shamers():
     form = ShamerForm()
     if form.validate_on_submit():
@@ -78,4 +80,4 @@ def login( user, request ):
     else:
         flash('Something went wrong with login...')
 
-def add_shamer( user, email ):
+#def add_shamer( user, email ):

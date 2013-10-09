@@ -64,7 +64,7 @@ class User(db.Model):
         return creds
 
     def can_add_client( self ):
-        return len( self.clients ) < app.config['MAX_CLIENTS_PER_USER']
+        return len( self.clients.all() ) < app.config['MAX_CLIENTS_PER_USER']
 
     def __repr__(self):
         return 'User: %(username)s' % {'username': self.username} 
