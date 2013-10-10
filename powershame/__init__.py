@@ -16,4 +16,4 @@ ch = logging.FileHandler( app.config['LOG_FILE'] )
 ch.setLevel(logging.DEBUG)
 app.logger.addHandler(ch)
 
-from powershame import views, api, models
+from powershame import views, api, models, backend_views

@@ -5,3 +5,4 @@ class Urls:
     login =        "/login"
     logout =       "/logout"
     signup =       "/signup"
+    render_notification = '/render_notification'
