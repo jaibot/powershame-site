@@ -28,4 +28,4 @@ def deploy():
     run('rm -rf /tmp/powershame /tmp/powershame.tar.gz')
     # and finally touch the .wsgi file so that mod_wsgi triggers
     # a reload of the application
-    run('touch /var/www/powershame/powershame.wsgi')
+    #run('touch /var/www/powershame/powershame.wsgi')
