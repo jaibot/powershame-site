@@ -19,7 +19,7 @@ def send_notification_email( session ):
     db.session.rollback()
     logging.debug('starting notification process')
     user = User.query.get( session.user )
-    shamers = session.shamers
+    shamers = user.shamers
     url = session.url
     addresses = [ shamer.identifier for shamer in shamers ]
     user_email = user.contact_info.first().identifier
