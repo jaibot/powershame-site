@@ -1,9 +1,9 @@
-from app import app
-from app import db
-from app import models
-from app.models.session import Session
-from app.models.user import User
-from app.models.contact_info import ContactInfo
+from powershame import app
+from powershame import db
+from powershame import models
+from powershame.models.session import Session
+from powershame.models.user import User
+from powershame.models.contact_info import ContactInfo
 import pika
 import json
 import boto.ses
