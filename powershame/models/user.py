@@ -2,7 +2,7 @@ from powershame import app
 from powershame import db
 from powershame import login_manager
 from powershame.models.client import Client
-from powershame.models.upload_creds import UploadCreds
+from powershame.models.upload_form import UploadForm
 from powershame.models.contact_info import ContactInfo
 from powershame.models.user_shamers import user_shamers
 from passlib.hash import pbkdf2_sha512
@@ -19,7 +19,7 @@ class User(db.Model):
     is_registered = db.Column( db.Boolean )
     clients = db.relationship('Client', backref = 'owner', lazy = 'dynamic')
     sessions = db.relationship('Session', backref = 'owner', lazy = 'dynamic')
-    upload_creds = db.relationship('UploadCreds', backref = 'owner', lazy = 'dynamic')
+    upload_forms = db.relationship('UploadForm', backref = 'owner', lazy = 'dynamic')
     contact_info = db.relationship('ContactInfo', backref = 'user', lazy='dynamic')
     shamers = db.relationship('ContactInfo', secondary=user_shamers,  backref='shamee', lazy='dynamic' )
 
@@ -53,24 +53,17 @@ class User(db.Model):
     def set_pw( self, pw ):
         self.password = hash_pw( pw )
 
-    def can_get_new_creds( self ):
+    def can_get_new_upload_form( self ):
         #TODO: add actual rules to limit uploads available
         return True
 
-    def get_upload_creds( self ):
+    def get_upload_form( self, filename ):
         """Returns a new upload credentials for the user or None"""
-        if self.can_get_new_creds():
-            new_creds = UploadCreds( user = self.id )
-            return new_creds
+        if self.can_get_new_upload_url():
+            new_form = UploadForm( user = self.id ).get_form_args()
+            return new_form
         else:
             return None
-        #creds = self.upload_creds.all()
-        #for c in creds:
-        #    if c.expired():
-        #        db.session.delete( c )
-        #db.session.commit( )
-        #creds = self.upload_creds.first() or UploadCreds( self )
-        #return creds
 
     def can_add_client( self ):
         return len( self.clients.all() ) < app.config['MAX_CLIENTS_PER_USER']

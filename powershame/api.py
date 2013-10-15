@@ -78,17 +78,18 @@ def register_client( *args, **kwargs ):
     else:
         return jsonify({'message':'Could not create client'}), HTTPCode.denied
 
-@app.route('/api/request_upload_creds', methods = ['POST'])
+@app.route('/api/request_upload_form', methods = ['POST'])
 @api()
 @auth_required
-def request_upload_creds(*args, **kwargs):
+def request_upload_form(*args, **kwargs):
     user = kwargs['user']
-    db.session.commit()
-    permissions = user.get_upload_creds().serialize()
-    if permissions:
-        permissions['bucket_name'] = app.config['PIC_BUCKET']
-        return jsonify(permissions), HTTPCode.ok
+    #db.session.commit()
+    form = user.get_upload_form()
+    if form:
+        db.session.commit()
+        return jsonify(form), HTTPCode.ok
     else:
+        db.session.rollback()
         return jsonify( {'message':'Could not get credentials'} ), HTTPCode.denied
 
 @app.route('/api/register_session', methods = ['POST'])
