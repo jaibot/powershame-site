@@ -1,3 +1,4 @@
+alembic.ini
 *.pyc
 config.py
 venv
