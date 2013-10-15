@@ -53,15 +53,24 @@ class User(db.Model):
     def set_pw( self, pw ):
         self.password = hash_pw( pw )
 
+    def can_get_new_creds( self ):
+        #TODO: add actual rules to limit uploads available
+        return True
+
     def get_upload_creds( self ):
-        """Return a good credential (if it exists) or None"""
-        creds = self.upload_creds.all()
-        for c in creds:
-            if c.expired():
-                db.session.delete( c )
-        db.session.commit( )
-        creds = self.upload_creds.first() or UploadCreds( self )
-        return creds
+        """Returns a new upload credentials for the user or None"""
+        if self.can_get_new_creds():
+            new_creds = UploadCreds( user = self.id )
+            return new_creds
+        else:
+            return None
+        #creds = self.upload_creds.all()
+        #for c in creds:
+        #    if c.expired():
+        #        db.session.delete( c )
+        #db.session.commit( )
+        #creds = self.upload_creds.first() or UploadCreds( self )
+        #return creds
 
     def can_add_client( self ):
         return len( self.clients.all() ) < app.config['MAX_CLIENTS_PER_USER']

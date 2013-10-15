@@ -33,3 +33,5 @@ def deploy():
 def clean():
     #remove local build files
     local('rm -rf dist Powershame_Server.egg-info')
+def find_pyc():
+    local('find . -name "*.pyc"')

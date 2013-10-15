@@ -1,10 +1,4 @@
-Implement server-side notifications
-Implement server-side storage
-Implement server-side rendering
-Write token-checking decorator (or see if one already exists)
-Sessions
-    Match requests to sessions
-    Implement session limits
-views.py
-    DRY user-getting-from-token
-remove templates (use CDN for everything)
+new upload framework
+    per-pic urls, restricted by length and prefix
+        DONE upgrade DB to reflect url instead of permissions  
+        delete unneeded AWS resources

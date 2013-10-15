@@ -1,14 +1,19 @@
-video-maker
+Listing of components, status of those components, and misc notes
+
+powershame-renderer (serperate repo)
     video-making daemon listens to server session manager. When a session is complete, downloads all session shots and compiles them into time-lapse. 
     deposits video at <location> and notifies server that video is ready
+    runs on rabbitmq and ffmpeg
 
 notifier
+    !! This is getting deleted and integrated into the main server
     talks to Powershame server and video-maker, sends out notifications for:
         - session started
         - video ready (10 minute warning)
         - session cancelled/missed
 
 police
+    TODO
     the police watches S3 for suspicious activity, blocks users who are doing Bad Things, and deletes non-powershame S3 files should they be uploaded
 
 Web UI
@@ -28,7 +33,7 @@ Web UI
 API
     session-management
         get_token (per-machine)
-        get_s3_permissons (rate-limited)
+        get_s3_permissons (rate-limited) #TODO: replace with per-shot upload url
         start_session
         end_session
     shamer-management

@@ -1,7 +1,6 @@
 from powershame import app
 from powershame import db
 from powershame.models.user import load_user
-from powershame.models.session_shamers import session_shamers
 from powershame.messaging import send_message
 import datetime
 
@@ -23,7 +22,6 @@ class Session(db.Model):
     end_time = db.Column(db.DateTime)
     url = db.Column( db.Unicode(2048) )
     url_expire = db.Column( db.DateTime )
-    shamers = db.relationship('ContactInfo', secondary=session_shamers )
     IN_PROGRESS, RENDERING, FINISHED=1,2,3
     def __init__( self, user, name, client ):
         self.user = user.id
