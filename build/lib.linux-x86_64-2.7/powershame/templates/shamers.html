@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<h1> Your current shamers </h1>
+
+{% for shamer in user.shamers %}
+    <div class="input-group">
+        <span class="input-group-addon">@</span>
+        <input type="text" class="form-control" placeholder="{{shamer.identifier}}">
+    </div>
+{% endfor %}
+<form action="" method="post" name="shamer">
+    {{form.hidden_tag()}}
+    <div class="input-group">
+            <span class="input-group-addon">@</span>
+            {{form.email_address(class="form-control", placeholder="Contact email")}}
+    </div>
+    <input type="submit" value="Add Shamer"></p>
+</form>
+
+{% endblock %}

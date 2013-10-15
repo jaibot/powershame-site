@@ -1,0 +1,22 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="col-sm-1 col-md-3"></div>
+<div class="col-sm-10 col-md-6">
+    <h2>Join Powershame</h2>
+    <form action="" method="post" name="login">
+        <div class="form-group input-group-lg">
+            {{form.hidden_tag()}}
+             <label class="sr-only" for="username">username</label>
+            {{form.username(size=80, class_="form-control", placeholder="Username")}}<br>
+             <label class="sr-only" for="password">password</label>
+            {{form.password(size=80, class_="form-control", placeholder="Password")}}<br>
+             <label class="sr-only" for="email">email</label>
+            {{form.email(size=80, class_="form-control", placeholder="Email address")}}<br>
+            <button type="submit" value="Signup" class="btn btn-primary btn-lg pull-right">Let's do this</button>
+        </div>
+    </form>
+</div>
+<div class="col-sm-1 col-md-3"></div>
+{% endblock %}
