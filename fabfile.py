@@ -32,5 +32,5 @@ def deploy():
 
 def clean():
     #remove local build files
-    local('rm -rf dist Powershame_Server.egg-info')
+    local('rm -rf dist Powershame_Server.egg-info build')
     local('pyclean .')
