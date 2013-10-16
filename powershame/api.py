@@ -43,7 +43,7 @@ def api(required=None):
             try:
                 if not request.json:
                     return jsonify({'message':'Request must be in JSON format'}),HTTPCode.bad_request
-                if required and not all( r in request.json for r in required ):
+                elif required and not all( r in request.json for r in required ):
                     response = dict( (r,r in request.json) for r in required )
                     response['message'] = 'One or more required arguments missing'
                     return jsonify(response), HTTPCode.bad_request
@@ -73,10 +73,9 @@ def register_client( *args, **kwargs ):
     user = get_user_by_login( username, password )
     if user and user.can_add_client():
         client = Client( user, client_name )
-    if client:
         return jsonify(client.serialize() ), HTTPCode.ok
     else:
-        return jsonify({'message':'Could not create client'}), HTTPCode.denied
+        return jsonify({'message':'Could not create client', 'user':user.username}), HTTPCode.denied
 
 @app.route('/api/request_upload_form', methods = ['POST'])
 @api()

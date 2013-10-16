@@ -57,16 +57,17 @@ class User(db.Model):
         #TODO: add actual rules to limit uploads available
         return True
 
-    def get_upload_form( self, filename ):
+    def get_upload_form( self ):
         """Returns a new upload credentials for the user or None"""
-        if self.can_get_new_upload_url():
+        if self.can_get_new_upload_form():
             new_form = UploadForm( user = self.id ).get_form_args()
             return new_form
         else:
             return None
 
     def can_add_client( self ):
-        return len( self.clients.all() ) < app.config['MAX_CLIENTS_PER_USER']
+        return True #TODO: FIXME
+        #return len( self.clients.all() ) < app.config['MAX_CLIENTS_PER_USER']
 
     def __repr__(self):
         return 'User: %(username)s' % {'username': self.username} 
