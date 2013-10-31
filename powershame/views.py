@@ -5,13 +5,11 @@ from powershame import app, db
 from powershame.urls import Urls
 from powershame.strings import Strings
 from powershame import db
+from powershame.httpcodes import HTTPCode
 
-from powershame.models.user import User, get_user_by_login, UsernameExists
+from powershame.models.user import User, get_user_by_login
 
 from forms import LoginForm, SignupForm, ShamerForm
-
-import requests
-from werkzeug.datastructures import MultiDict
 
 @app.route('/')
 def index():
@@ -23,16 +21,16 @@ def logout():
     return standard_render('index.html')
 
 @app.route(Urls.login, methods = ['GET','POST'] )
-def login():
+def login_view():
     form = LoginForm()
     if form.validate_on_submit():
-        username = form.username.data
+        email = form.email.data
         password = form.password.data
-        user = get_user_by_login( username, password )
+        user = get_user_by_login( email, password )
         if not user:
-            flash('Sorry - username and/or password incorrect')
+            flash("Hmmm, that's not quite right.")
         else:
-            login( user, request )
+            login( user )
         return redirect(request.args.get('next') or '/')
     return standard_render('login.html', 
         title = 'Sign In',
@@ -42,22 +40,14 @@ def login():
 def signup():
     form = SignupForm()
     if form.validate_on_submit():
-        username = form.username.data
-        password = form.password.data
-        email    = form.email.data
-        try:
-            user = User( username, password, email )
-        except UsernameExists:
-            flash('Sorry, someone already has that username!')
-        else:
-            login( user, request )
+        user = User( **form.data )
+        db.session.add(user)
+        db.session.commit()
+        if user:
+            login( user )
     else:
         flash('form did not validate')
     return standard_render('signup.html', form = form )
-
-@app.route( Urls.sessions,methods = ['GET','POST'] )
-def list_sessions():
-    return standard_render( 'list_sessions.html' )
 
 @app.route( Urls.shamers, methods=['GET','POST'] )
 def shamers():
@@ -73,11 +63,10 @@ def standard_render( template, **kwargs ):
     kwargs['urls'] = app.config['URLS']
     return render_template( template, **kwargs )
 
-def login( user, request ):
-    success = login_user( user )
-    if success:
+def login( user ) :
+    if login_user( user ):
+        app.logger.debug('%s logged in'%user.email)
+        app.logger.debug('current user: %s'% current_user.email )
         flash('Logged in successfully!')
     else:
         flash('Something went wrong with login...')
-
-#def add_shamer( user, email ):

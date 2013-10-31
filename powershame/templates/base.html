@@ -24,20 +24,30 @@
         <a class="navbar-brand" href="/">{{strings.app_name}}</a>
       </div>
 
+            {{user.email}} 
+            {{user.email}} 
+            {{user.email}} 
+            {{user.email}} 
+            {{user.email}} 
+            {{user}} 
+            {{user}} 
+            {{user}} 
+            {{user}} 
+            {{user}} 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav">
-            {% if user.username %} 
+            {% if user.email %} 
                 <li class="active"><a href="{{urls.sessions}}">{{strings.your_sessions}}</a></li>
                 <li><a href="{{urls.shamers}}">{{strings.your_shamers}}</a></li>
             {% endif %}
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="#">{{strings.about}}</a></li>
-            {% if user.username %} 
+            {% if user.email %} 
                 <li>
                 <a href="{{urls.profile}}">
-                Logged in as: {{user.username}}
+                Logged in as: {{user.email}}
                 </a>
                 </li>
                 <li>
@@ -62,6 +72,16 @@
     </nav>
 
 
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+    
 {% block content %}{% endblock %}
 
 </div>

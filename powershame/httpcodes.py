@@ -1,6 +1,8 @@
 class HTTPCode:
-    ok = 200
-    bad_request=400
-    unauthorized=401
-    denied = 403
-    server_error = 500
+    OK = 200
+    BAD_REQUEST=400
+    UNAUTHORIZED=401
+    DENIED = 403
+    NOT_FOUND = 404
+    TOO_MANY_REQUESTS = 429
+    SERVER_ERROR = 500
