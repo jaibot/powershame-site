@@ -6,8 +6,11 @@ from powershame.urls import Urls
 from powershame.strings import Strings
 from powershame import db
 from powershame.httpcodes import HTTPCode
+from powershame import jobs
 
 from powershame.models.user import User, get_user_by_login
+from powershame.models.session_views import SessionView
+from powershame.models.session import Session
 
 from forms import LoginForm, SignupForm, ShamerForm
 
@@ -56,11 +59,17 @@ def shamers():
         user.add_shamer( form.email_address )
     return standard_render( 'shamers.html', form=form )
 
+@app.route( Urls.session_view, methods=['GET'] )
+def session_view( session_secret ):
+    session_view = SessionView.query.filter_by( secret = session_secret ).first()
+    session = Session.query.get( session_view.session_id )
+    url = jobs.temp_vid_url( session )
+    return standard_render( 'session_view.html', session=session, url=url )
 
 def standard_render( template, **kwargs ):
     kwargs['user'] = current_user
-    kwargs['strings'] = app.config['STRINGS']
-    kwargs['urls'] = app.config['URLS']
+    kwargs['strings'] = Strings
+    kwargs['urls'] = Urls
     return render_template( template, **kwargs )
 
 def login( user ) :

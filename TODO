@@ -1,4 +1,2 @@
-new upload framework
-    per-pic urls, restricted by length and prefix
-        DONE upgrade DB to reflect url instead of permissions  
-        delete unneeded AWS resources
+sessions
+

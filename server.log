@@ -1,0 +1,2329 @@
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 64, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 43, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 127, in post
+    return jsonify( {'url': _session_url( shame_session.id ),
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 133, in _session_url
+    return SessionApi.url+'/'+session_id
+TypeError: cannot concatenate 'str' and 'long' objects
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 125, in post
+    return serialize_with_url( session )
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 130, in serialize_with_url
+    serial = session.serialize()
+  File "/home/jai/powershame-site/powershame/models/session.py", line 11, in serialize
+    serial['user'] = User.query.get( self.user ).email
+NameError: global name 'User' is not defined
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 125, in post
+    return serialize_with_url( session )
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 131, in serialize_with_url
+    serial['url'] = _session_url( session )
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 135, in _session_url
+    return url_for(SessionApi)[:-9]+'/'+str(session.id)
+NameError: global name 'url_for' is not defined
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 125, in post
+    return serialize_with_url( session )
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 131, in serialize_with_url
+    serial['url'] = _session_url( session )
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 135, in _session_url
+    return url_for(SessionApi)[:-9]+'/'+str(session.id)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/helpers.py", line 268, in url_for
+    if endpoint[:1] == '.':
+TypeError: 'MethodViewType' object has no attribute '__getitem__'
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 125, in post
+    return serialize_with_url( session )
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 131, in serialize_with_url
+    serial['url'] = _session_url( session )
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 135, in _session_url
+    return api.url_for(SessionApi)[:-9]+'/'+str(session.id)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 261, in url_for
+    return url_for(resource.endpoint, **values)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/helpers.py", line 312, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1641, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/helpers.py", line 305, in url_for
+    force_external=external)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/werkzeug/routing.py", line 1620, in build
+    raise BuildError(endpoint, values, method)
+BuildError: ('session', {}, None)
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 125, in post
+    return serialize_with_url( session )
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 131, in serialize_with_url
+    serial['url'] = _session_url( session )
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 135, in _session_url
+    return api.url_for(SessionApi)[:-9]+'/'+str(session.id)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 261, in url_for
+    return url_for(resource.endpoint, **values)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/helpers.py", line 312, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1641, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/helpers.py", line 305, in url_for
+    force_external=external)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/werkzeug/routing.py", line 1620, in build
+    raise BuildError(endpoint, values, method)
+BuildError: ('session', {}, None)
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 125, in post
+    return serialize_with_url( session )
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 131, in serialize_with_url
+    serial['url'] = _session_url( session )
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 135, in _session_url
+    return api.url_for('session')[:-9]+'/'+str(session.id)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 261, in url_for
+    return url_for(resource.endpoint, **values)
+AttributeError: 'str' object has no attribute 'endpoint'
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 125, in post
+    return serialize_with_url( session )
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 131, in serialize_with_url
+    serial['url'] = _session_url( session )
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 135, in _session_url
+    return api.url_for(SessionApi)[:-9]+'/'+str(session.id)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 261, in url_for
+    return url_for(resource.endpoint, **values)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/helpers.py", line 312, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1641, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/helpers.py", line 305, in url_for
+    force_external=external)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/werkzeug/routing.py", line 1620, in build
+    raise BuildError(endpoint, values, method)
+BuildError: ('session', {}, None)
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 125, in post
+    return serialize_with_url( session )
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 130, in serialize_with_url
+    serial = session.serialize()
+  File "/home/jai/powershame-site/powershame/models/session.py", line 11, in serialize
+    serial = dict( (x,getattr(self,x) ) for x in ('id','start_time','end_time') )
+  File "/home/jai/powershame-site/powershame/models/session.py", line 11, in <genexpr>
+    serial = dict( (x,getattr(self,x) ) for x in ('id','start_time','end_time') )
+AttributeError: 'Session' object has no attribute 'start_time'
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 67, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 46, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 160, in put
+    init
+NameError: global name 'init' is not defined
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 67, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 46, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 160, in put
+    init
+NameError: global name 'init' is not defined
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 67, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 46, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 160, in put
+    init
+NameError: global name 'init' is not defined
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 67, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 46, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 160, in put
+    init
+NameError: global name 'init' is not defined
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 67, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 46, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 160, in put
+    init
+NameError: global name 'init' is not defined
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 67, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 46, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 160, in put
+    init
+NameError: global name 'init' is not defined
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 11, in render
+    shots = Screenshot.filter( Screenshot.user==user, Screenshot.time >= start, Screenshot.time <= end ).all()
+AttributeError: type object 'Screenshot' has no attribute 'filter'
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 11, in render
+    shots = Screenshot.filter( Screenshot.user==user, Screenshot.time >= start, Screenshot.time <= end ).all()
+AttributeError: type object 'Screenshot' has no attribute 'filter'
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 11, in render
+    shots = Screenshot.filter( Screenshot.user==user, Screenshot.time >= start, Screenshot.time <= end ).all()
+AttributeError: type object 'Screenshot' has no attribute 'filter'
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 11, in render
+    shots = Screenshot.filter( Screenshot.user==user, Screenshot.time >= start, Screenshot.time <= end ).all()
+AttributeError: type object 'Screenshot' has no attribute 'filter'
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 11, in render
+    shots = Screenshot.filter( Screenshot.user==user, Screenshot.time >= start, Screenshot.time <= end ).all()
+AttributeError: type object 'Screenshot' has no attribute 'filter'
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 11, in render
+    shots = Screenshot.filter( Screenshot.user==user, Screenshot.time >= start, Screenshot.time <= end ).all()
+AttributeError: type object 'Screenshot' has no attribute 'filter'
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 11, in render
+    shots = Screenshot.filter( Screenshot.user==user, Screenshot.time >= start, Screenshot.time <= end ).all()
+AttributeError: type object 'Screenshot' has no attribute 'filter'
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 11, in render
+    shots = Screenshot.filter( Screenshot.user==user, Screenshot.time >= start, Screenshot.time <= end ).all()
+AttributeError: type object 'Screenshot' has no attribute 'filter'
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 11, in render
+    shots = Screenshot.filter( Screenshot.user==user, Screenshot.time >= start, Screenshot.time <= end ).all()
+AttributeError: type object 'Screenshot' has no attribute 'filter'
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 11, in render
+    shots = Screenshot.query.filter( Screenshot.user==user, Screenshot.time >= start, Screenshot.time <= end ).all()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/operators.py", line 267, in __le__
+    return self.operate(le, other)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/orm/attributes.py", line 252, in operate
+    return op(self.comparator, *other, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/operators.py", line 267, in __le__
+    return self.operate(le, other)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/orm/properties.py", line 212, in operate
+    return op(self.__clause_element__(), *other, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/operators.py", line 267, in __le__
+    return self.operate(le, other)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/expression.py", line 2311, in operate
+    return op(self.comparator, *other, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/operators.py", line 267, in __le__
+    return self.operate(le, other)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/expression.py", line 1994, in operate
+    return o[0](self, self.expr, op, *(other + o[1:]), **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/expression.py", line 2055, in _boolean_compare
+    "Only '=', '!=', 'is_()', 'isnot()' operators can "
+ArgumentError: Only '=', '!=', 'is_()', 'isnot()' operators can be used with None/True/False
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 11, in render
+    shots = Screenshot.query.filter( Screenshot.user==user, Screenshot.time >= start, Screenshot.time <= end ).all()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/operators.py", line 267, in __le__
+    return self.operate(le, other)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/orm/attributes.py", line 252, in operate
+    return op(self.comparator, *other, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/operators.py", line 267, in __le__
+    return self.operate(le, other)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/orm/properties.py", line 212, in operate
+    return op(self.__clause_element__(), *other, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/operators.py", line 267, in __le__
+    return self.operate(le, other)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/expression.py", line 2311, in operate
+    return op(self.comparator, *other, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/operators.py", line 267, in __le__
+    return self.operate(le, other)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/expression.py", line 1994, in operate
+    return o[0](self, self.expr, op, *(other + o[1:]), **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/expression.py", line 2055, in _boolean_compare
+    "Only '=', '!=', 'is_()', 'isnot()' operators can "
+ArgumentError: Only '=', '!=', 'is_()', 'isnot()' operators can be used with None/True/False
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 11, in render
+    shots = Screenshot.query.filter( Screenshot.user==user, Screenshot.time >= start, Screenshot.time <= end ).all()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/operators.py", line 267, in __le__
+    return self.operate(le, other)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/orm/attributes.py", line 252, in operate
+    return op(self.comparator, *other, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/operators.py", line 267, in __le__
+    return self.operate(le, other)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/orm/properties.py", line 212, in operate
+    return op(self.__clause_element__(), *other, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/operators.py", line 267, in __le__
+    return self.operate(le, other)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/expression.py", line 2311, in operate
+    return op(self.comparator, *other, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/operators.py", line 267, in __le__
+    return self.operate(le, other)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/expression.py", line 1994, in operate
+    return o[0](self, self.expr, op, *(other + o[1:]), **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/expression.py", line 2055, in _boolean_compare
+    "Only '=', '!=', 'is_()', 'isnot()' operators can "
+ArgumentError: Only '=', '!=', 'is_()', 'isnot()' operators can be used with None/True/False
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 11, in render
+    shots = Screenshot.query.filter( Screenshot.user==user, Screenshot.time >= start, Screenshot.time <= end ).all()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/operators.py", line 267, in __le__
+    return self.operate(le, other)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/orm/attributes.py", line 252, in operate
+    return op(self.comparator, *other, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/operators.py", line 267, in __le__
+    return self.operate(le, other)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/orm/properties.py", line 212, in operate
+    return op(self.__clause_element__(), *other, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/operators.py", line 267, in __le__
+    return self.operate(le, other)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/expression.py", line 2311, in operate
+    return op(self.comparator, *other, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/operators.py", line 267, in __le__
+    return self.operate(le, other)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/expression.py", line 1994, in operate
+    return o[0](self, self.expr, op, *(other + o[1:]), **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/expression.py", line 2055, in _boolean_compare
+    "Only '=', '!=', 'is_()', 'isnot()' operators can "
+ArgumentError: Only '=', '!=', 'is_()', 'isnot()' operators can be used with None/True/False
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 11, in render
+    shots = Screenshot.query.filter( Screenshot.user==user, Screenshot.time >= start, Screenshot.time <= end ).all()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/operators.py", line 267, in __le__
+    return self.operate(le, other)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/orm/attributes.py", line 252, in operate
+    return op(self.comparator, *other, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/operators.py", line 267, in __le__
+    return self.operate(le, other)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/orm/properties.py", line 212, in operate
+    return op(self.__clause_element__(), *other, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/operators.py", line 267, in __le__
+    return self.operate(le, other)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/expression.py", line 2311, in operate
+    return op(self.comparator, *other, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/operators.py", line 267, in __le__
+    return self.operate(le, other)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/expression.py", line 1994, in operate
+    return o[0](self, self.expr, op, *(other + o[1:]), **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/expression.py", line 2055, in _boolean_compare
+    "Only '=', '!=', 'is_()', 'isnot()' operators can "
+ArgumentError: Only '=', '!=', 'is_()', 'isnot()' operators can be used with None/True/False
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 11, in render
+    shots = Screenshot.query.filter( Screenshot.user==user, Screenshot.time >= start, Screenshot.time <= end ).all()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/operators.py", line 267, in __le__
+    return self.operate(le, other)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/orm/attributes.py", line 252, in operate
+    return op(self.comparator, *other, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/operators.py", line 267, in __le__
+    return self.operate(le, other)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/orm/properties.py", line 212, in operate
+    return op(self.__clause_element__(), *other, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/operators.py", line 267, in __le__
+    return self.operate(le, other)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/expression.py", line 2311, in operate
+    return op(self.comparator, *other, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/operators.py", line 267, in __le__
+    return self.operate(le, other)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/expression.py", line 1994, in operate
+    return o[0](self, self.expr, op, *(other + o[1:]), **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/sqlalchemy/sql/expression.py", line 2055, in _boolean_compare
+    "Only '=', '!=', 'is_()', 'isnot()' operators can "
+ArgumentError: Only '=', '!=', 'is_()', 'isnot()' operators can be used with None/True/False
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 12, in send_message
+    pika.ConnectionParameters( host=app.config['QUEUE_HOST'] ) )
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 107, in __init__
+    super(BlockingConnection, self).__init__(parameters, None, False)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/pika/adapters/base_connection.py", line 62, in __init__
+    on_close_callback)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/pika/connection.py", line 590, in __init__
+    self.connect()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 206, in connect
+    if not self._adapter_connect():
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 275, in _adapter_connect
+    raise exceptions.AMQPConnectionError(1)
+AMQPConnectionError: 1
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 12, in send_message
+    pika.ConnectionParameters( host=app.config['QUEUE_HOST'] ) )
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 107, in __init__
+    super(BlockingConnection, self).__init__(parameters, None, False)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/pika/adapters/base_connection.py", line 62, in __init__
+    on_close_callback)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/pika/connection.py", line 590, in __init__
+    self.connect()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 206, in connect
+    if not self._adapter_connect():
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 275, in _adapter_connect
+    raise exceptions.AMQPConnectionError(1)
+AMQPConnectionError: 1
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 12, in send_message
+    pika.ConnectionParameters( host=app.config['QUEUE_HOST'] ) )
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 107, in __init__
+    super(BlockingConnection, self).__init__(parameters, None, False)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/pika/adapters/base_connection.py", line 62, in __init__
+    on_close_callback)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/pika/connection.py", line 590, in __init__
+    self.connect()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 206, in connect
+    if not self._adapter_connect():
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 275, in _adapter_connect
+    raise exceptions.AMQPConnectionError(1)
+AMQPConnectionError: 1
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 12, in send_message
+    pika.ConnectionParameters( host=app.config['QUEUE_HOST'] ) )
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 107, in __init__
+    super(BlockingConnection, self).__init__(parameters, None, False)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/pika/adapters/base_connection.py", line 62, in __init__
+    on_close_callback)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/pika/connection.py", line 590, in __init__
+    self.connect()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 206, in connect
+    if not self._adapter_connect():
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 275, in _adapter_connect
+    raise exceptions.AMQPConnectionError(1)
+AMQPConnectionError: 1
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 12, in send_message
+    pika.ConnectionParameters( host=app.config['QUEUE_HOST'] ) )
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 107, in __init__
+    super(BlockingConnection, self).__init__(parameters, None, False)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/pika/adapters/base_connection.py", line 62, in __init__
+    on_close_callback)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/pika/connection.py", line 590, in __init__
+    self.connect()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 206, in connect
+    if not self._adapter_connect():
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/pika/adapters/blocking_connection.py", line 275, in _adapter_connect
+    raise exceptions.AMQPConnectionError(1)
+AMQPConnectionError: 1
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x3518550> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7f1bbc1e9f50> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7f1bbc1e9190> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7f1bbc1e9d50> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7f29901d4750> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7f299029e290> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7f2990298a50> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7f29902a5590> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7f29902a5710> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7f299029ebd0> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7f29902ab750> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7f29902ab610> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7f299029e1d0> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7f29902af9d0> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7f29902af210> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7f29902ab5d0> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7ff1f81b55d0> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7f910c1b55d0> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7f910c227dd0> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7f910c2274d0> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7f910c227ad0> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7f910c23b450> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7f910c227b90> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7f910c23b290> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7f910c2423d0> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7f910c235610> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7fb90c1b55d0> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <powershame.models.screenshots.Screenshot object at 0x7f81ec1ab690> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <generator object <genexpr> at 0x7fa2cc100d70> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <generator object <genexpr> at 0x7fa2cc22c5a0> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <generator object <genexpr> at 0x7fa2cc100fa0> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 66, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 45, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 158, in put
+    render( session )
+  File "/home/jai/powershame-site/powershame/render.py", line 15, in render
+    send_message( session_data, app.config['RENDERING_QUEUE'] )
+  File "/home/jai/powershame-site/powershame/messaging.py", line 22, in send_message
+    body          = json.dumps(message),
+  File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <generator object <genexpr> at 0x7fa2cc236370> is not JSON serializable
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 67, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 46, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 157, in put
+    render( session )
+TypeError: render() takes exactly 2 arguments (1 given)
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 67, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 46, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 157, in put
+    render( session )
+TypeError: render() takes exactly 2 arguments (1 given)
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 67, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 46, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 157, in put
+    render( session )
+TypeError: render() takes exactly 2 arguments (1 given)
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 67, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 46, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 157, in put
+    render( session )
+TypeError: render() takes exactly 2 arguments (1 given)
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 67, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 46, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 157, in put
+    render( session )
+TypeError: render() takes exactly 2 arguments (1 given)
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 67, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 46, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 157, in put
+    render( session )
+TypeError: render() takes exactly 2 arguments (1 given)
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 67, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 46, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 157, in put
+    render( session )
+TypeError: render() takes exactly 2 arguments (1 given)
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 67, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 46, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 157, in put
+    render( session, url_for(RenderApi, id=session_id, _external=True ) )
+NameError: global name 'session_id' is not defined
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 67, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 46, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 157, in put
+    render( session, url_for(RenderApi, id=session_id, _external=True ) )
+NameError: global name 'session_id' is not defined
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 67, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 46, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 157, in put
+    render( session, url_for(RenderApi, id=session_id, _external=True ) )
+NameError: global name 'session_id' is not defined
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 67, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 46, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 157, in put
+    render( session, url_for(RenderApi, id=session_id, _external=True ) )
+NameError: global name 'session_id' is not defined
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 67, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 46, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 157, in put
+    render( session, url_for(RenderApi, id=session.id, _external=True ) )
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/helpers.py", line 268, in url_for
+    if endpoint[:1] == '.':
+TypeError: 'MethodViewType' object has no attribute '__getitem__'
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 67, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 46, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 157, in put
+    render( session, url_for(RenderApi, id=session.id, _external=True ) )
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/helpers.py", line 268, in url_for
+    if endpoint[:1] == '.':
+TypeError: 'MethodViewType' object has no attribute '__getitem__'
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 67, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 46, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 157, in put
+    render( session, url_for(RenderApi, id=session.id, _external=True ) )
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/helpers.py", line 268, in url_for
+    if endpoint[:1] == '.':
+TypeError: 'MethodViewType' object has no attribute '__getitem__'
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 67, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 46, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 157, in put
+    render( session, url_for(RenderApi, id=session.id, _external=True ) )
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/helpers.py", line 268, in url_for
+    if endpoint[:1] == '.':
+TypeError: 'MethodViewType' object has no attribute '__getitem__'
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 67, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 46, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 157, in put
+    render( session, url_for(RenderApi, id=session.id, _external=True ) )
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/helpers.py", line 268, in url_for
+    if endpoint[:1] == '.':
+TypeError: 'MethodViewType' object has no attribute '__getitem__'
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 67, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 46, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 157, in put
+    render( session, url_for(RenderApi, id=session.id, _external=True ) )
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/helpers.py", line 268, in url_for
+    if endpoint[:1] == '.':
+TypeError: 'MethodViewType' object has no attribute '__getitem__'
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 67, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 46, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 157, in put
+    render( session, url_for(RenderApi, id=session.id, _external=True ) )
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/helpers.py", line 268, in url_for
+    if endpoint[:1] == '.':
+TypeError: 'MethodViewType' object has no attribute '__getitem__'
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 67, in throttled_f
+    return f(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 46, in authed_f
+    return f(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 157, in put
+    render( session, api.url_for(RenderApi, id=session.id, _external=True ) )
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/helpers.py", line 268, in url_for
+    if endpoint[:1] == '.':
+TypeError: 'MethodViewType' object has no attribute '__getitem__'
+Internal Error
+Traceback (most recent call last):
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 252, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/jai/.virtualenvs/powershame-site/local/lib/python2.7/site-packages/flask_restful/__init__.py", line 332, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/jai/powershame-site/powershame/api_views/v0_1.py", line 169, in post
+    jobs.post_render( id ) #TODO: offload this to celery async task
+  File "/home/jai/powershame-site/powershame/jobs.py", line 14, in post_render
+    s_view = SessionView(
+NameError: global name 'SessionView' is not defined

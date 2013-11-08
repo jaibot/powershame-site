@@ -1,4 +1,3 @@
-from flask import Flask, request
 from flask.ext.login import UserMixin
 from powershame import db, login_manager
 from passlib.hash import pbkdf2_sha512
@@ -20,19 +19,25 @@ class User( db.Model, UserMixin ):
     active = db.Column(db.Boolean())
     confirmed_at = db.Column(db.DateTime())
     screenshots = db.relationship('Screenshot', backref = 'owner', lazy = 'dynamic' )
+    sessions = db.relationship('Session', backref = 'owner', lazy = 'dynamic')
+    shamers = db.relationship('Shamer', backref = 'shamee', lazy = 'dynamic')
     #shamers = db.relationship('ContactInfo', secondary=user_shamers,  backref='shamee', lazy='dynamic' )
     #clients = db.relationship('Client', backref = 'owner', lazy = 'dynamic')
-    #sessions = db.relationship('Session', backref = 'owner', lazy = 'dynamic')
+
     def __init__( self, password, **kwargs ):
         self.password = pbkdf2_sha512.encrypt( password )
         db.Model.__init__( self, **kwargs )
+
     def set_password( self, pw ):
         self.password = pbkdf2_sha512.encrypt( pw )
+
     def check_pw( self, pw ):
         return pbkdf2_sha512.verify( pw, self.password )
+
     def get_auth_token( self ):
         """tokens are generated from encrypted password"""
         return pbkdf2_sha512.encrypt( self.password )
+
     def check_auth_token( self, token ):
         """check that password was used to generate token"""
         return pbkdf2_sha512.verify( self.password, token )
