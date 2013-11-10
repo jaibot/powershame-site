@@ -21,8 +21,6 @@ class User( db.Model, UserMixin ):
     screenshots = db.relationship('Screenshot', backref = 'owner', lazy = 'dynamic' )
     sessions = db.relationship('Session', backref = 'owner', lazy = 'dynamic')
     shamers = db.relationship('Shamer', backref = 'shamee', lazy = 'dynamic')
-    #shamers = db.relationship('ContactInfo', secondary=user_shamers,  backref='shamee', lazy='dynamic' )
-    #clients = db.relationship('Client', backref = 'owner', lazy = 'dynamic')
 
     def __init__( self, password, **kwargs ):
         self.password = pbkdf2_sha512.encrypt( password )

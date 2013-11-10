@@ -38,7 +38,7 @@ def auth_required(f):
     @wraps(f)
     def authed_f(*args, **kwargs):
         for x in ('username', 'API-Token'):
-            if not x in request.headers:
+            if not (x in request.headers and request.headers[x]):
                 return bad_request("Missing required header %s"%x)
         token = request.headers['API-Token']
         user = User.query.filter_by(email=request.headers['username']).first()
@@ -53,6 +53,9 @@ def auth_required(f):
 def throttle(f):
     """Decorator for functions to be throttled per-user"""
     def throttled_f( *args, **kwargs ):
+        for x in ('username', 'API-Token'):
+            if not (x in request.headers and request.headers[x]):
+                return bad_request("Missing required header %s"%x)
         user = User.query.filter_by(email=request.headers['username']).first()
         # calls are forgiven every THROTTLE_DECAY seconds, 
         #   so calculate how many user has earned since last call
@@ -71,15 +74,14 @@ def throttle(f):
         return f(*args, **kwargs)
     return throttled_f
 
-
 class TokenApi( Resource ):
     url = API_URL + '/token'
     def __init__( self ):
         self.post_parser = reqparse.RequestParser()
         self.post_parser.add_argument( 'username', type=str, required=True,
-                help = "No user specified" )
+                help = "No user specified", location='json' )
         self.post_parser.add_argument( 'password', type=str, required=True,
-                help = "password required" )
+                help = "password required", location='json' )
         self.get_parser = reqparse.RequestParser()
         self.get_parser.add_argument( 'username', type=str, required=True,
                 help = "No username specified" )
@@ -92,6 +94,8 @@ class TokenApi( Resource ):
         if user:
             return {    'token': user.get_auth_token(),
                         'username': user.email  }
+        else:
+            return bad_request()
                 
     def get( self ):
         args = self.get_parser.parse_args()
