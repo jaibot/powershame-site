@@ -7,3 +7,4 @@ build
 *.egg-info
 Powershame_Server*
 powershame.log*
+*.log
