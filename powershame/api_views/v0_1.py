@@ -162,17 +162,18 @@ class SessionApi( Resource ):
                 setattr( session, k, v )
         db.session.commit()
         if args['end']:
-            jobs.render( session, api.url_for(RenderApi, id=session.id, _external=True ) )
+            jobs.render( session )
         return serialize_with_url( session )
 
 class RenderApi( Resource ):
     url = API_URL+'/render/<int:id>'
     def __init__( self ):
         self.post_parser = reqparse.RequestParser()
-        self.post_parser.add_argument( 'render_secret', type=str, required=True )
+        self.post_parser.add_argument( 'secret', type=str, required=True )
     def post( self, id ):
         args = self.post_parser.parse_args()
-        if not args['render_secret']==app.config['RENDER_SECRET']:
+        session = Session.query.get( id )
+        if args['secret'] != session.secret:
             return unauthorized()
         jobs.post_render( id ) #TODO: offload this to celery async task
         return 200

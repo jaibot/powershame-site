@@ -12,7 +12,7 @@ import random
 
 conn = S3Connection( app.config['VIEWER_KEY'], app.config['VIEWER_SECRET'] )
 
-def render( session, callback_url ):
+def render( session ):
     start = session.start
     end = session.end
     user = session.user
