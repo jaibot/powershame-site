@@ -59,6 +59,8 @@ def throttle(f):
         user = User.query.filter_by(email=request.headers['username']).first()
         # calls are forgiven every THROTTLE_DECAY seconds, 
         #   so calculate how many user has earned since last call
+        if not user:
+            return bad_request('No user specified')
         if not user.last_throttle_check:
             user.last_throttle_check = int(time() )
         if not user.throttle_counter:

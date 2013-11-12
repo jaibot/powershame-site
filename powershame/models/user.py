@@ -1,6 +1,7 @@
 from flask.ext.login import UserMixin
 from powershame import db, login_manager
 from passlib.hash import pbkdf2_sha512
+from time import time
 
 def int_time():
     return int( time() )
