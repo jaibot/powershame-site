@@ -11,4 +11,4 @@ class SignupForm(Form):
     password = PasswordField('password', validators = [Required()])
 
 class ShamerForm(Form):
-    email_address = TextField('email', validators=[Required()] )
+    email = TextField('email', validators=[Required()] )

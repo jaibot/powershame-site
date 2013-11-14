@@ -8,6 +8,8 @@ class Session( db.Model ):
     end = db.Column( db.BigInteger, index=True )
     rendered = db.Column( db.Boolean, default=False )
     secret = db.Column( db.Unicode(64) )
+    key = db.Column( db.Unicode( 64 ) )
+    bucket = db.Column( db.Unicode(64) )
 
     def serialize( self ):
         serial = dict( (x,getattr(self,x) ) for x in ('id','start','end') )

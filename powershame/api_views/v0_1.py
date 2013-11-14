@@ -11,7 +11,7 @@ from powershame.httpcodes import HTTPCode
 from powershame.models.user import User
 from powershame.models.screenshots import Screenshot
 from powershame.models.session import Session
-from powershame import jobs
+import jobs
 
 from time import time
 from functools import wraps
@@ -59,8 +59,6 @@ def throttle(f):
         user = User.query.filter_by(email=request.headers['username']).first()
         # calls are forgiven every THROTTLE_DECAY seconds, 
         #   so calculate how many user has earned since last call
-        if not user:
-            return bad_request('No user specified')
         if not user.last_throttle_check:
             user.last_throttle_check = int(time() )
         if not user.throttle_counter:
@@ -174,8 +172,8 @@ class RenderApi( Resource ):
         self.post_parser.add_argument( 'secret', type=str, required=True )
     def post( self, id ):
         args = self.post_parser.parse_args()
-        session = Session.query.get( id )
-        if args['secret'] != session.secret:
+        session = Session.query.get(id)
+        if not args['secret']==session.secret:
             return unauthorized()
         jobs.post_render( id ) #TODO: offload this to celery async task
         return 200

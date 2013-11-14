@@ -1,2 +1,9 @@
-sessions
-
+Adding shamers (improve interface)
+Safety
+    Limit Upload frequency
+    Limit rendering frequency
+    Sanity check times
+Notifications
+    Notify shamers with unique url on start, completion
+Generate unique-s3-url-generating session-viewer page
+Thumbnails for sessions

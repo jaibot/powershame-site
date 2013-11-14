@@ -1,6 +1,6 @@
 class Urls:
     sessions =     "/sessions"
-    session_view = "/session_view/<session_secret>"
+    session =      "/session"
     shamers =      "/shamers"
     profile =      "/profile"
     login =        "/login"
