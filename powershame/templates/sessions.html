@@ -1,0 +1,14 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+
+<ul>
+{% for session in sessions %}
+    <li><a>start: {{ session.start }} end:{{ sessions.end }}</a></li>
+{% endfor %}
+</ul>
+
+
+{{sessions}}
+{% endblock %}
