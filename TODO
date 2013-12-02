@@ -1,4 +1,4 @@
-Adding shamers (improve interface)
+global jinja variables (standard_render is a stupid solution because I didn't know any better)
 Safety
     Limit Upload frequency
     Limit rendering frequency
