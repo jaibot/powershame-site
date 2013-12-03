@@ -1,13 +1,14 @@
 from flask import render_template, redirect, request, abort,  flash, url_for
 from flask.ext.login import login_user, logout_user, current_user, login_required
+from flask.ext.mail import Message
 from time import sleep
 
-from powershame import app, db, jobs, mail
-from flask.ext.mail import Message
+from powershame import app, db, jobs
 from powershame.urls import Urls
 from powershame.strings import Strings
 from powershame import db
 from powershame.httpcodes import HTTPCode
+from powershame.mail_jobs import registration_email
 
 from powershame.models.user import User, get_user_by_login
 from powershame.models.session_views import SessionView
@@ -97,9 +98,10 @@ def sessions():
     all_sessions = current_user.sessions.all()
     return standard_render( 'sessions.html', sessions=all_sessions )
 
-@app.route( Urls.session, methods=['GET'] )
-def session_view( session_secret=None, session_number=None ):
+@app.route( Urls.session+'/<session_secret>', methods=['GET'] )
+def session_view( session_secret ):
     session_view = SessionView.query.filter_by( secret = session_secret ).first()
+    flash(session_secret)
     session = Session.query.get( session_view.session_id )
     url = jobs.temp_vid_url( session )
     return standard_render( 'session_view.html', session=session, url=url )
@@ -124,10 +126,6 @@ def create_user_or_not( email, password ):
         return None, "email already exists"
     user = User( email=email, password=password )
     if user:
-        msg = Message("Welcome to Powershame!",
-                sender="welcome@powershame.com",
-                recipients=[email] )
-        flash("Sent confirmation email to %s"%email)
-        mail.send( msg )
+        registration_email( user )
         return user, "success"
 

@@ -11,6 +11,9 @@ from powershame.httpcodes import HTTPCode
 from powershame.models.user import User
 from powershame.models.screenshots import Screenshot
 from powershame.models.session import Session
+
+from powershame.mail_jobs import session_started_email
+
 import jobs
 
 from time import time
@@ -131,6 +134,7 @@ class SessionListApi( Resource ):
         session = Session( user=user.id )
         db.session.add( session )
         db.session.commit()
+        session_started_email( session )
         return serialize_with_url( session )
     def get( self, user=None ):
         return { 'sessions': ( serialize_with_url(s) for s in user.sessions ) }

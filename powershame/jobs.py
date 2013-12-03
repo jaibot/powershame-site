@@ -5,6 +5,7 @@ from powershame.models.session_views import SessionView
 from powershame.models.screenshots import Screenshot
 from powershame.messaging import send_message
 from powershame import api_views
+from powershame.mail_jobs import session_rendered_email
 
 from boto.s3.connection import S3Connection
 
@@ -49,6 +50,7 @@ def post_render( session_id ):
         )
         db.session.add(s_view)
     db.session.commit()
+    session_rendered_email( session )
 
 def temp_vid_url( session ):
     url = conn.generate_url(3600, 
