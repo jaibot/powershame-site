@@ -79,7 +79,7 @@ def shamers():
     if form.validate_on_submit():
         current_shamers = current_user.shamers.all()
         current_shamer_emails = [x.email for x in current_shamers]
-        new_emails = [ x.data for x in ( form.email_1, form.email_2, form.email_3, form.email_4, form.email_5 ) ]
+        new_emails = set([ x.data for x in ( form.email_1, form.email_2, form.email_3, form.email_4, form.email_5 ) ])
         for new_email in new_emails:
             if new_email and not new_email in current_shamer_emails:
                 shamer = Shamer( user=current_user.id, email=new_email )
