@@ -5,3 +5,4 @@ class Shamer( db.Model ):
     user = db.Column( db.Integer, db.ForeignKey('user.id'), index=True )
     email = db.Column( db.Unicode( 512 ) )
     confirmed = db.Column( db.Boolean, default=False )
+    db.UniqueConstraint( 'user','email' )
