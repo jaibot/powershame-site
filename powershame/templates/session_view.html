@@ -2,5 +2,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1><a href="{{url}}">video</a></h1>
+<h1>Powershame session for {{session.owner.email}}</h1>
+
+<video src="{{url}}" controls>
+      Your browser does not support the <code>video</code> element.
+</video>
 {% endblock %}

@@ -1,6 +1,7 @@
 class Urls:
-    sessions =     "/sessions"
-    session =      "/session"
+    sessions =                  "/sessions"
+    session_view =              "/session"
+    session_view_shamers =      "/session_shamers"
     shamers =      "/shamers"
     profile =      "/profile"
     login =        "/login"

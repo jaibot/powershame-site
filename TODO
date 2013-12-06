@@ -5,5 +5,9 @@ Safety
     Sanity check times
 Notifications
     Notify shamers with unique url on start, completion
+Shamer options
+    opt out of emails
+    confirm address
+    combined profile for all shamer things
 Generate unique-s3-url-generating session-viewer page
 Thumbnails for sessions

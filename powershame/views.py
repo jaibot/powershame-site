@@ -98,13 +98,22 @@ def sessions():
     all_sessions = current_user.sessions.all()
     return standard_render( 'sessions.html', sessions=all_sessions )
 
-@app.route( Urls.session+'/<session_secret>', methods=['GET'] )
-def session_view( session_secret ):
+@app.route( Urls.session_view_shamers+'/<session_secret>', methods=['GET'] )
+def session_view_shamers( session_secret ):
     session_view = SessionView.query.filter_by( secret = session_secret ).first()
-    flash(session_secret)
     session = Session.query.get( session_view.session_id )
     url = jobs.temp_vid_url( session )
     return standard_render( 'session_view.html', session=session, url=url )
+
+@app.route( Urls.session_view+'/<session_id>', methods=['GET'] )
+@login_required
+def session_view( session_id ):
+    session = Session.query.get( session_id )
+    if session and session.owner == current_user:
+        url = jobs.temp_vid_url( session )
+        return standard_render( 'session_view.html', session=session, url=url )
+    else:
+        abort(401)
 
 def standard_render( template, **kwargs ):
     kwargs['user'] = current_user
