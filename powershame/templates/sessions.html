@@ -5,10 +5,8 @@
 
 <ul>
 {% for session in sessions %}
-    <li><a href="/session/{{session.id}}">start: {{ session.start }} end:{{ sessions.end }}</a></li>
+    <li><a href="/session/{{session.id}}">start: {{ session.start }} end:{{ session.end }}</a></li>
 {% endfor %}
 </ul>
 
-
-{{sessions}}
 {% endblock %}

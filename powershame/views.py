@@ -55,7 +55,7 @@ def login_view():
 
 @app.route(Urls.signup, methods = ['GET','POST'] )
 def signup():
-    if current_user:
+    if current_user.is_authenticated():
         return redirect( '/' )
     form = SignupForm()
     if request.method == 'POST':

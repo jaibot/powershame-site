@@ -164,9 +164,10 @@ class SessionApi( Resource ):
         for k,v in args.iteritems():
             if v:
                 setattr( session, k, v )
-        db.session.commit()
         if args['end']:
+            session.end =time()
             jobs.render( session )
+        db.session.commit()
         return serialize_with_url( session )
 
 class RenderApi( Resource ):
