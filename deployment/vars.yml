@@ -1,0 +1,28 @@
+--
+project_name: powershame
+project_root: /opt/powershame
+project_repo: git@bitbucket.org:jaibot/powershame-site.git
+system_packages:
+  - build-essential
+  - git
+  - nginx
+  - postgresql
+  - postgresql-server-dev-all
+  - python-dev
+  - python-setuptools
+  - postfix
+  - rabbitmq
+  - gunicorn
+python_packages:
+  - pip
+  - virtualenv
+  - flask
+  - flask-login
+  - flask-mail
+  - flask-migrate
+  - flask-script
+  - flask-sqlalchemy
+  - boto
+  - pika
+initfiles:
+  - gunicorn
