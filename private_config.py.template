@@ -1,24 +1,72 @@
+# -*- coding: utf8 -*-
 import os
 
 # dev stuff
-DEBUG = True
-TESTING = True
+DEBUG = False
+TESTING = False
+DEPLOY = 'dev'
 LOG_LEVEL = os.environ.get('LOG_LEVEL', 'DEBUG')
+LOG_FILE = 'server.log'
+
+CSRF_ENABLED = True
+
+# AUTHENTICATION STUFF **************************
+# Two different kinds of authentication: HTTP sessions (web interface)
+# and client tokens (for running sessions, etc). These should probably
+# be separated, eventually.
+# API client authentication
+API_TOKEN_HEADER='API-Token'
+# HTTP session authentication
+SECURITY_TOKEN_AUTHENTICATION_HEADER='Authentication-Token'
+
+
+# MESSAGING STUFF **************************
+RENDERING_QUEUE = 'rendering'
+NOTIFICATION_QUEUE = 'notification'
+
+
+# THROTTLING SETTINGS *************
+# Allow up to THROTTLE_MAX_CALLS per user, decreasing their call count by 1 
+# every THROTTLE_DECAY seconds
+THROTTLE_MAX_CALLS = 30 #maximum number of calls before throttling starts
+THROTTLE_DECAY = 2 #credit a call every 2 seconds
+
+## messaging queue host
+QUEUE_HOST = 'localhost'
 
 #Secure forms
-SECRET_KEY = 'Change this before going to production' #TODO: Doublecheck CSRF security
+SECRET_KEY = 'My forms are more secure than a very secure thing.' #TODO: Doublecheck CSRF security
 
 #DB connection
-SQLALCHEMY_DATABASE_URI = 'mysql://user:password@server/db'
+SQLALCHEMY_DATABASE_URI = ''
 
 #AWS stuff
+AWS_REGION='us-east-1'
 ISSUER_KEY=''
 ISSUER_SECRET=''
+
+VIEWER_KEY=''
+VIEWER_SECRET=''
+
 UPLOADER_ROLE_ARN = ''
-PIC_BUCKET = ''
-RENDERER_KEY = ''
-RENDERER_SECRET = ''
-VID_BUCKET = ''
+PIC_BUCKET = 'powershame-upload'
+VID_BUCKET = 'powershame-videos'
+SES_KEY = ''
+SES_SECRET = ''
+MAX_PIC_SIZE = 10000000 #max pic size in bytes
+
+#EMAIL STUFF
+NOTIFY_EMAIL_ADDRESS = 'Powershame@powershame.com'
+NOTIFY_EMAIL_NAME = 'Powershame'
+MAIL_DEFAULT_SENDER = 'powershame@powershame.com'
+MAIL_SERVER = 'email-smtp.us-east-1.amazonaws.com'
+MAIL_PORT = 465
+MAIL_USE_SSL = True
+MAIL_USERNAME = ''
+MAIL_PASSWORD = ''
+
+#Backend auth
+RENDER_SECRET = ''
 
 # messaging queue host
 QUEUE_HOST = 'localhost'
