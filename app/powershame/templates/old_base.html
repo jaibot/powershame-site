@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <title>{{title}}</title>
+
+    <!-- Auto refresh for dev -->
+        <META HTTP-EQUIV="refresh" CONTENT="15"> 
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+
+    <hr>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li>{{ message }} </li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}    
+
+    <div class="container">
+      <div class="navbar">
+        <div class="navbar-inner">
+
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            my food is problematic
+            <span class="icon-bar"></span>
+            this is complicated
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="{{ url_for('index') }}">Powershame</a>
+            <ul class="nav">
+              <li><a href="{{ url_for('index') }}">{{ ('Choose Shamers') }}</a></li>
+            </ul>
+          <div class="nav-collapse collapse">
+          </div>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="span12">
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+    </div>>   
+  </body>
+</html>
