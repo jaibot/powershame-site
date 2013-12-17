@@ -1,10 +1,9 @@
 alembic.ini
 tags
-*.pyc
-config.py
-venv
 dist*
-build
+build*
 *.egg-info
 Powershame_Server*
 *.log
+*.pyc
+*config.py

@@ -8,7 +8,7 @@ staging
 local
 
 [production]
-www.powershame.com nickname=production vm=0 branch=master
+new.powershame.com nickname=production vm=0 branch=master
 
 [staging]
 staging.powershame.com nickname=staging vm=0 branch=dev
