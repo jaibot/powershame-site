@@ -7,4 +7,3 @@ Powershame_Server*
 *.log
 *.pyc
 *config.py
-deployment/deploy-staging.yml
