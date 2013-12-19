@@ -10,21 +10,16 @@
       action: apt_repository repo=ppa:nginx/stable state=present
 
     - name: install common packages needed for python application development
-      action: apt pkg=$item state=installed
+      action: apt pkg={{ item }} state=installed
       with_items:
         - libpq-dev
-        - libmysqlclient-dev
         - libxml2-dev
-        - libjpeg62
-        - libjpeg62-dev
         - libfreetype6
         - libfreetype6-dev
         - zlib1g-dev
-        - mysql-client
         - python-dev
         - python-setuptools
         - python-imaging
-        - python-mysqldb
         - python-psycopg2
         - git-core
         - nginx
@@ -46,6 +41,9 @@
     - name: write nginx.conf
       action: template src=files/templates/nginx.conf dest=/etc/nginx/nginx.conf
 
+    - name: create nginx ssl folder
+      action: file dest=/etc/nginx/ssl state=directory owner=root
+
     - name: create supervisord config folder
       action: file dest=/etc/supervisor state=directory owner=root
 
@@ -61,7 +59,5 @@
     - name: create .ssh folder
       action: file dest=/home/{{ user }}/.ssh state=directory owner={{ user }} mode=0700
 
-    - name: copy ssh key
-      copy: src=/home/jai/Powershame/powershame_key dest=/home/{{ user }}/.ssh/id_rsa owner={{ user }} mode=0600
-
-    - name: create virtualenvF
+    - name: copy known_hosts
+      copy: src=files/ssh/known_hosts dest=/home/{{ user }}/.ssh/known_hosts owner={{ user }} mode=0600

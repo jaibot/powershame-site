@@ -1,10 +1,9 @@
 - hosts: staging
   user: ubuntu
-  sudo: True
 
   vars:
     app_name: powershame
-    repo_url: git@bitbucket.org:jaibot/powershame-site.git
+    repo_url: git@bitbucket.com:jaibot/powershame-site.git
     repo_remote: bb
     repo_version: dev
     webapps_dir: /opt/
@@ -12,43 +11,67 @@
     user: ubuntu
 
   tasks:
+    - name: ensure root directory
+      action: file dest={{ webapps_dir }}/{{ app_name }} state=directory owner={{ user }}
+      sudo: True
+
     - name: ensure log directory
-      action: file dest=${webapps_dir}/${app_name}/log state=directory
+      action: file dest={{ webapps_dir }}/{{ app_name }}/log state=directory
+      sudo: True
 
     - name: deploy code from repository
-      action: git repo=$repo_url dest=${webapps_dir}/${app_name}/src remote=$repo_remote version=$repo_version
+      action: git repo={{ repo_url }} dest={{ webapps_dir }}/{{ app_name }}/src/ remote={{ repo_remote }} version={{ repo_version }}
 
     - name: set config file
       copy: src=../config.py dest={{ webapps_dir }}/{{ app_name }}/config.py
 
     - name: install dependencies into virtualenv
-      action: pip requirements=${webapps_dir}/${app_name}/src/requirements.txt virtualenv=${webapps_dir}/${app_name}/venv state=present
+      action: pip requirements={{ webapps_dir }}/{{ app_name }}/src/requirements.txt virtualenv={{ webapps_dir }}/{{ app_name }}/venv state=present
 
     - name: create supervisor program config
-      action: template src=files/templates/supervisor-site.ini dest=/etc/supervisor/${app_name}.ini
+      action: template src=files/templates/supervisor-site.ini dest=/etc/supervisor/{{ app_name }}.ini
       notify:
         - restart app
+      sudo: True
 
     - name: create nginx site config
-      action: template src=files/templates/nginx_site.conf dest=/etc/nginx/sites-available/${app_name}.conf
+      action: template src=files/templates/nginx_site.conf dest=/etc/nginx/sites-available/{{ app_name }}.conf
       notify:
         - restart nginx
+      sudo: True
+
+    - name: copy unified crt
+      copy: src=/home/jai/Powershame/www.powershame.com/powershame-unified.crt dest=/etc/nginx/ssl/powershame-unified.crt
+      sudo: True
+
+    - name: copy ssl key
+      copy: src=/home/jai/Powershame/www.powershame.com/www.powershame.com.pem dest=/etc/nginx/ssl/www.powershame.com.pem
+      sudo: True
+
+    - name: ensure log file
+      copy: src=files/empty dest=/var/log/{{ app_name }}.log  owner={{ user }}
+      sudo: True
 
     - name: create gunicorn config file
       action: template src=files/templates/gunicorn.py dest={{webapps_dir }}/{{ app_name }}/gunicorn.py owner={{ user }} mode=0600
 
     - name: link nginx config
-      action: file src=/etc/nginx/sites-available/${app_name}.conf dest=/etc/nginx/sites-enabled/${app_name}.conf state=link
+      action: file src=/etc/nginx/sites-available/{{ app_name }}.conf dest=/etc/nginx/sites-enabled/{{ app_name }}.conf state=link
+      sudo: True
 
     - name: start app
-      action: supervisorctl name={{ app_name }} state=started
+      action: supervisorctl name={{ app_name }} state=restarted
+      sudo: True
 
     - name: start nginx
-      action: service name=nginx state=started
+      action: service name=nginx state=restarted
+      sudo: True
 
   handlers:
     - name: restart app
       action: supervisorctl name={{ app_name }} state=restarted
+      sudo: True
 
     - name: restart nginx
       action: service name=nginx state=restarted
+      sudo: True
