@@ -42,3 +42,4 @@ simplejson==2.2.1
 six==1.3.0
 wsgiref==0.1.2
 gunicorn==18.0
+psycopg2==2.5.1
