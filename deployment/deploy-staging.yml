@@ -65,6 +65,9 @@
 
     - name: upgrade db
       command: "{{ venv_dir }}/bin/python {{ app_dir }}/manage.py db upgrade"
+      environment:
+          POWERSHAME_CONFIG: "{{ webapps_dir }}/{{ app_name }}/config.py"
+
 
     - name: start app
       action: supervisorctl name={{ app_name }} state=restarted
