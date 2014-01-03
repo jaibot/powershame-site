@@ -64,7 +64,7 @@
       sudo: True
 
     - name: upgrade db
-      command: "{{ venv_dir }}/bin/python {{ app_dir }}/manage.py db upgrade"
+      command: "{{ venv_dir }}/bin/python {{ app_dir }}/manage.py db upgrade --directory {{ app_dir }}/migrations"
       environment:
           POWERSHAME_CONFIG: "{{ webapps_dir }}/{{ app_name }}/config.py"
 
