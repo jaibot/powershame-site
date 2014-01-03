@@ -7,8 +7,12 @@
     repo_remote: bb
     repo_version: dev
     webapps_dir: /opt/
+    install_dir: "{{ webapps_dir }}{{ app_name }}"
+    venv_dir: "{{ install_dir }}/venv/"
+    app_dir: "{{ install_dir }}/src/app/"
     server_name: www.powershame.com staging.powershame.com
     user: ubuntu
+    private_files_root: /home/jai/powershame/www.powershame.com/
 
   tasks:
     - name: ensure root directory
@@ -41,11 +45,11 @@
       sudo: True
 
     - name: copy unified crt
-      copy: src=/home/jai/Powershame/www.powershame.com/powershame-unified.crt dest=/etc/nginx/ssl/powershame-unified.crt
+      copy: src={{ private_files_root }}/powershame-unified.crt dest=/etc/nginx/ssl/powershame-unified.crt
       sudo: True
 
     - name: copy ssl key
-      copy: src=/home/jai/Powershame/www.powershame.com/www.powershame.com.pem dest=/etc/nginx/ssl/www.powershame.com.pem
+      copy: src={{ private_files_root }}/www.powershame.com.pem dest=/etc/nginx/ssl/www.powershame.com.pem
       sudo: True
 
     - name: ensure log file
@@ -58,6 +62,9 @@
     - name: link nginx config
       action: file src=/etc/nginx/sites-available/{{ app_name }}.conf dest=/etc/nginx/sites-enabled/{{ app_name }}.conf state=link
       sudo: True
+
+    - name: upgrade db
+      command: "{{ venv_dir }}/bin/python {{ app_dir }}/manage.py db upgrade"
 
     - name: start app
       action: supervisorctl name={{ app_name }} state=restarted

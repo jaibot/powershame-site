@@ -5,6 +5,10 @@
 
   vars:
       - user: ubuntu
+      - app_name: powershame
+  vars_files:
+      - /home/jai/powershame/private_vars.yml
+
   tasks:
     - name: add nginx ppa
       action: apt_repository repo=ppa:nginx/stable state=present
@@ -23,6 +27,7 @@
         - python-psycopg2
         - git-core
         - nginx
+        - postgresql
 
     - name: install pip
       action: easy_install name=pip
@@ -53,8 +58,26 @@
     - name: create supervisord init script
       action: template src=files/templates/supervisord.sh dest=/etc/init.d/supervisord mode=0755
 
+    - name: create postgres db
+      postgresql_db: name={{ app_name }}
+      sudo_user: postgres
+      sudo: True
+
+    - name: ensure user has access to database
+      postgresql_user: db={{ app_name }} name={{ app_name }} password={{ db_pw }} priv=ALL
+      sudo_user: postgres
+      sudo: True
+
+    - name: ensure user does not have unnecessary privilege
+      postgresql_user: name={{ app_name }} role_attr_flags=NOSUPERUSER,NOCREATEDB
+      sudo_user: postgres
+      sudo: True
+
     - name: start supervisord service and have it run during system startup
       action: service name=supervisord state=started enabled=yes
+
+    - name: start postgresql service and have it run during system startup
+      action: service name=postgresql state=started enabled=yes
 
     - name: create .ssh folder
       action: file dest=/home/{{ user }}/.ssh state=directory owner={{ user }} mode=0700

@@ -11,3 +11,7 @@ Shamer options
     combined profile for all shamer things
 Generate unique-s3-url-generating session-viewer page
 Thumbnails for sessions
+Deploy config
+    turn into template
+    move all private info (keys, pws) into private ansible playbook
+    include ansible playbook and substitute in things on deployment
