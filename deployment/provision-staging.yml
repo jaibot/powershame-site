@@ -32,6 +32,11 @@
     - name: install pip
       action: easy_install name=pip
 
+    - name: install setuptools with pip
+      action: pip name=$item state=present extra_args="--no-use-wheel --upgrade"
+      with_items:
+        - setuptools 
+
     - name: install various libraries with pip
       action: pip name=$item state=present
       with_items:
