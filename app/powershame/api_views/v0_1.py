@@ -60,6 +60,8 @@ def throttle(f):
             if not (x in request.headers and request.headers[x]):
                 return bad_request("Missing required header %s"%x)
         user = User.query.filter_by(email=request.headers['username']).first()
+        if not user:
+            return unauthorized('You are not logged in')
         # calls are forgiven every THROTTLE_DECAY seconds, 
         #   so calculate how many user has earned since last call
         if not user.last_throttle_check:
