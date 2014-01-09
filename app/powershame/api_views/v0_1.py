@@ -172,6 +172,19 @@ class SessionApi( Resource ):
         db.session.commit()
         return serialize_with_url( session )
 
+    def post( self, id, user ):
+        args = self.put_parser.parse_args()
+        session = Session.query.get( id )
+        db.session.add( session )
+        for k,v in args.iteritems():
+            if v:
+                setattr( session, k, v )
+        if args['end']:
+            session.end =time()
+            jobs.render( session )
+        db.session.commit()
+        return serialize_with_url( session )
+
 class RenderApi( Resource ):
     url = API_URL+'/render/<int:id>'
     def __init__( self ):

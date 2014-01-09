@@ -1,5 +1,5 @@
 #taken form https://github.com/mattupstate/ansible-tutorial/blob/master/devops/setup_server.yml
-- hosts: staging
+- hosts: production
   user: ubuntu
   sudo: True
 
