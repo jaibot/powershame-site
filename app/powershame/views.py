@@ -115,6 +115,10 @@ def session_view( session_id ):
     else:
         abort(401)
 
+@app.route( Urls.wait_what, methods=['GET'] )
+def skeptical_view():
+    return standard_render( 'skeptical.html' )
+
 def standard_render( template, **kwargs ):
     kwargs['user'] = current_user
     kwargs['strings'] = Strings

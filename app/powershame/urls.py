@@ -1,4 +1,5 @@
 class Urls:
+    wait_what =     "/wait_what"
     sessions =                  "/sessions"
     session_view =              "/session"
     session_view_shamers =      "/session_shamers"
