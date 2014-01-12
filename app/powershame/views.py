@@ -76,10 +76,10 @@ def signup():
 @login_required
 def shamers():
     form = ShamerForm()
-    if form.validate_on_submit():
-        current_shamers = current_user.shamers.all()
+    current_shamers = current_user.shamers.all()
+    if request.method == 'POST' and form.validate_on_submit():
         current_shamer_emails = [x.email for x in current_shamers]
-        new_emails = set([ x.data for x in ( form.email_1, form.email_2, form.email_3, form.email_4, form.email_5 ) ])
+        new_emails = [ x.data for x in form.shamers ]
         for new_email in new_emails:
             if new_email and not new_email in current_shamer_emails:
                 shamer = Shamer( user=current_user.id, email=new_email )
@@ -88,8 +88,16 @@ def shamers():
             if not old_email in new_emails:
                 shamer_to_delete = Shamer.query.filter_by( email=old_email, user=current_user.id ).first()
                 db.session.delete( shamer_to_delete )
-        form = ShamerForm()
-    db.session.commit()
+        db.session.commit()
+    # We want to create fields for all existing shamers, and then 5 blank slots
+    # I couldn't think of a better way to do this than receating the form
+    # from scratch each time; hence UGLY HACK
+    while len( form.shamers ):
+        form.shamers.pop_entry()
+    for shamer in current_user.shamers.all():
+        form.shamers.append_entry( shamer.email )
+    for x in xrange(5):
+        form.shamers.append_entry()
     return standard_render( 'shamers.html', form=form, shamers=current_user.shamers.all() )
 
 @app.route( Urls.sessions, methods=['GET'] )

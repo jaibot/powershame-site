@@ -10,14 +10,9 @@
     <form action="" method="post" name="shamers">
         <div class="form-group input-group-lg">
             {{form.hidden_tag()}}
-            {% for field in ( form.email_1, form.email_2, form.email_3, form.email_4, form.email_5 ) %}
-                {% if loop.index0 < shamers|length %}
-                    <label class="sr-only" for="email_{{loop.index}}">email</label>
-                    {{field(size=80, class_="form-control", type="email", value=shamers[loop.index0].email )}}
-                {% else %}
-                    <label class="sr-only" for="email_{{loop.index}}">email</label>
-                    {{field(size=80, class_="form-control", placeholder="Email", value="", type="email")}}
-                {% endif %}
+            {% for field in form.shamers %}
+                <label class="sr-only" for="{{ field.name }}">email</label>
+                {{field(size=80, class_="form-control", type="email" )}}
             {% endfor %}
         </div>
         <div class="form-group">
@@ -26,9 +21,5 @@
     </form>
 </div>
 <div class="col-sm-1 col-md-3"></div>
-
-
-
-
 
 {% endblock %}
