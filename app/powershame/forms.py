@@ -10,7 +10,6 @@ class SignupForm(Form):
     email = TextField('email', validators = [Required()])
     password = PasswordField('password', validators = [Required()])
 
-
 class ShamerForm( Form ):
     shamers = FieldList( TextField('email') )
 
