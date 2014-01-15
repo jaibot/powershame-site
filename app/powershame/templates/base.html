@@ -32,6 +32,14 @@
             {% endif %}
         </ul>
         <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download</a>
+                <ul class="dropdown-menu">
+                  <li><a href="https://s3.amazonaws.com/powershame.com/powershame.exe">Windows Client</a></li>
+                  <li><a href="https://s3.amazonaws.com/powershame.com/powershame">Linux Client</a></li>
+                  <li><a href="https://github.com/jaibot/powershame-client">Client Source on Github</a></li>
+                </ul>
+            </li>
             {% if user.email %} 
                 <li>
                 <a href="{{urls.profile}}">
