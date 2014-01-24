@@ -4,7 +4,7 @@
 {% block content %}
 <h1>Powershame session for {{session.owner.email}}</h1>
 
-<video src="{{url}}" controls>
+<video src="{{url}}" width="{{session.width}}" height="{{session.height}}" controls>
       Your browser does not support the <code>video</code> element.
 </video>
 {% endblock %}

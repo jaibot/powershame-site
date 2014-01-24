@@ -157,6 +157,8 @@ class SessionApi( Resource ):
         self.put_parser = reqparse.RequestParser()
         self.put_parser.add_argument( 'start', type = int )
         self.put_parser.add_argument( 'end', type = int )
+        self.put_parser.add_argument( 'height', type = int )
+        self.put_parser.add_argument( 'width', type = int )
         super( SessionApi, self ).__init__()
 
     def put( self, id, user ):
