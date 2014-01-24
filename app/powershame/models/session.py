@@ -10,8 +10,8 @@ class Session( db.Model ):
     secret = db.Column( db.Unicode(64) )
     key = db.Column( db.Unicode( 64 ) )
     bucket = db.Column( db.Unicode(64) )
-    width = db.Column( db.Integer , default=1024)
-    height = db.Column( db.Integer , default=768)
+    width = db.Column( db.Integer , default=800)
+    height = db.Column( db.Integer , default=450)
 
     def serialize( self ):
         serial = dict( (x,getattr(self,x) ) for x in ('id','start','end', 'height', 'width') )
