@@ -30,6 +30,8 @@ def render( session ):
     shots = Screenshot.query.filter( Screenshot.user==user, Screenshot.time >= start, Screenshot.time <= end ).all()
     session_data = {
             'id': session.id,
+            'height': session.height,
+            'width': session.width,
             'shots': [s.render_serialize() for s in shots],
             'bucket': session.bucket,
             'video_key': session.key,
