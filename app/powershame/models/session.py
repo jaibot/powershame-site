@@ -10,10 +10,10 @@ class Session( db.Model ):
     secret = db.Column( db.Unicode(64) )
     key = db.Column( db.Unicode( 64 ) )
     bucket = db.Column( db.Unicode(64) )
-    width = db.Column( db.Integer )
-    height = db.Column( db.Integer )
+    width = db.Column( db.Integer , default=1024)
+    height = db.Column( db.Integer , default=768)
 
     def serialize( self ):
-        serial = dict( (x,getattr(self,x) ) for x in ('id','start','end') )
+        serial = dict( (x,getattr(self,x) ) for x in ('id','start','end', 'height', 'width') )
         serial['user'] = User.query.get( self.user ).email
         return serial
