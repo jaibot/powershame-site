@@ -26,7 +26,7 @@ def render( session ):
     start = session.start
     end = (session.end or session.start+6000)
     user = session.user
-    callback_url = api.url_for( api_views.v0_1.RenderApi, id=session.id, _external=True, _scheme='http')
+    callback_url = api.url_for( api_views.v0_1.RenderApi, id=session.id, _external=True, _scheme='https')
     shots = Screenshot.query.filter( Screenshot.user==user, Screenshot.time >= start, Screenshot.time <= end ).all()
     session_data = {
             'id': session.id,
