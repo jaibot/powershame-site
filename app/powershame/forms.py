@@ -1,5 +1,5 @@
 from flask.ext.wtf import Form, TextField, BooleanField, PasswordField, FieldList
-from flask.ext.wtf import Required
+from flask.ext.wtf import Required, Length
 
 class LoginForm(Form):
     email = TextField('email', validators = [Required()])
@@ -13,3 +13,5 @@ class SignupForm(Form):
 class ShamerForm( Form ):
     shamers = FieldList( TextField('email') )
 
+class SessionDescriptionForm( Form ):
+    description = FieldList( TextField('description'), validators=[Length(max=4096)] )
