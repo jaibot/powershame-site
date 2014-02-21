@@ -103,7 +103,7 @@ def shamers():
 @app.route( Urls.sessions, methods=['GET'] )
 @login_required
 def sessions():
-    all_sessions = current_user.sessions.all()
+    all_sessions = current_user.sessions.order_by('start').all()
     return standard_render( 'sessions.html', sessions=all_sessions )
 
 @app.route( Urls.session_view_shamers+'/<session_secret>', methods=['GET'] )
