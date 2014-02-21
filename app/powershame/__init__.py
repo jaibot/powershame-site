@@ -31,4 +31,4 @@ login_manager.init_app(app)
 import powershame.views
 import powershame.models
 from powershame.api_views import *
-from template_filters import *
+import template_filters 
