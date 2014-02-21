@@ -7,7 +7,11 @@
 
 <ul>
 {% for session in sessions if session.start and session.end %}
-<li><a href="/session/{{ session.id }}">{{ session.start | epoch_date_format }} {{ session.start | epoch_time_format }} to {{ session.end | epoch_time_format }}</a></li>
+    <li>
+        <a href="/session/{{ session.id }}">
+            {{ session.start | epoch_date_format }} {{ session.start | epoch_time_format }} to {{ session.end | epoch_time_format }}
+        </a>
+    </li>
 {% endfor %}
 </ul>
 
