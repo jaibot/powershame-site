@@ -15,7 +15,7 @@ from powershame.models.session_views import SessionView
 from powershame.models.session import Session
 from powershame.models.shamers import Shamer
 
-from forms import LoginForm, SignupForm, ShamerForm
+from forms import LoginForm, SignupForm, ShamerForm, DescriptionForm
 
 @app.route('/qwerasdf')
 def testjai():
@@ -113,13 +113,22 @@ def session_view_shamers( session_secret ):
     url = jobs.temp_vid_url( session )
     return standard_render( 'session_view.html', session=session, url=url )
 
-@app.route( Urls.session_view+'/<session_id>', methods=['GET'] )
+@app.route( Urls.session_view+'/<session_id>', methods=['GET', 'POST'] )
 @login_required
 def session_view( session_id ):
     session = Session.query.get( session_id )
+    form = DescriptionForm()
+    if request.method == 'POST' and form.validate_on_submit():
+        description = form.description.data;
+        session.description = description
+        db.session.add( session )
+        db.session.commit()
     if session and session.owner == current_user:
         url = jobs.temp_vid_url( session )
-        return standard_render( 'session_view.html', session=session, url=url )
+        return standard_render( 'session_view.html', 
+                form = form, 
+                session=session, 
+                url=url )
     else:
         abort(401)
 

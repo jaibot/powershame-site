@@ -12,7 +12,7 @@ class Session( db.Model ):
     bucket = db.Column( db.Unicode(64) )
     width = db.Column( db.Integer , default=800)
     height = db.Column( db.Integer , default=450)
-    description = db.Column( db.Unicode(2048) )
+    description = db.Column( db.Unicode(4096) )
 
     def serialize( self ):
         serial = dict( (x,getattr(self,x) ) for x in ('id','start','end', 'height', 'width') )

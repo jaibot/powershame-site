@@ -13,3 +13,5 @@ class SignupForm(Form):
 class ShamerForm( Form ):
     shamers = FieldList( TextField('email') )
 
+class DescriptionForm( Form ):
+    description = TextField('description')

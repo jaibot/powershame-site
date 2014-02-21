@@ -7,4 +7,24 @@
 <video src="{{url}}" width="{{session.width}}" height="{{session.height}}" controls>
       Your browser does not support the <code>video</code> element.
 </video>
+
+{% if session.description %}
+<br/>
+{{ session.description }}
+<br/>
+{% endif %}
+
+{% if form and current_user.id == session.user %}
+<br/>
+Describe the session: <br />
+    <form action="" method="post" name="login">
+        <div class="form-group input-group-lg">
+            {{form.hidden_tag()}}
+             <label class="sr-only" for="description">description</label>
+            {{form.description( class_="form-control" )}}
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg pull-right">And That's What Happened</button>
+    </form>
+{% endif %}
+
 {% endblock %}
