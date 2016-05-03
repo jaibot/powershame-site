@@ -6,7 +6,7 @@ from flask.ext.mail import Message
 
 def registration_email( user ):
     msg = Message("Welcome to Powershame!",
-            sender="welcome@powershame.com",
+            sender="welcome@powershame.jaibot.com",
             recipients=[user.email] )
     mail.send( msg )
 
@@ -14,7 +14,7 @@ def session_started_email( session ):
     user = session.owner
     for shamer in user.shamers:
         msg = Message("%s has begun a Powershame session"%user.email,
-                sender="notification@powershame.com",
+                sender="notification@powershame.jaibot.com",
                 recipients=[shamer.email] )
         mail.send( msg )
 
@@ -25,7 +25,7 @@ def session_rendered_email( session ):
         session_url = url_for('.session_view_shamers', session_secret=session_view.secret, _external=True)
         msg = Message("Check out %s\'s finished Powershame session"%user.email,
                 html="<a href=\"%s\">Check out %s\'s finished Powershame session</a>"%(session_url,user.email),
-                sender="notification@powershame.com",
+                sender="notification@powershame.jaibot.com",
                 recipients=[shamer.email] )
         mail.send( msg )
 
